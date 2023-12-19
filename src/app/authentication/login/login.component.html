@@ -1,0 +1,24 @@
+<div class="container">
+    <form #loginForm="ngForm" class="Login">
+        <h1>Log in</h1>
+        <div class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</div>
+        <div>
+            <label for="username">Username<span class="required">*</span></label>
+            <input type="text" placeholder="Enter username" name="username" [(ngModel)]="logInData.username" required />
+        </div>
+        <br>
+        <div>
+            <label for="password">Password<span class="required">*</span></label>
+            <input type="password" placeholder="Enter password" name="password" [(ngModel)]="logInData.password"
+                required />
+        </div>
+        <br>
+        <div>
+            <button (click)="handleLogin()" [disabled]="!loginForm.form.valid">Login</button>
+        </div>
+        <br>
+        <div>
+            <p>New to Mumbai's Best Food?<a routerLink="/signup" style="color: red;">Create account</a></p>
+        </div>
+    </form>
+</div>

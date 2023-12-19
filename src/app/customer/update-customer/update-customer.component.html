@@ -1,0 +1,188 @@
+<h1>Profile</h1>
+
+<div class="container">
+    <form #editForm="ngForm">
+        <div class="content">
+            <h3>Name:<span class="required">*</span></h3>
+            <input type="text" name="customerName" #customerName="ngModel" [(ngModel)]="customerData.customerName"
+                [disabled]="!isNameEditMode" pattern="^[a-zA-Z]{2,10}$" (change)="isDirty=true" required>
+            <button class="edit-button" (click)="toggleEditMode('name')"><span
+                    class="material-symbols-outlined">edit</span></button>
+        </div>
+
+        <span class="validation-msg" *ngIf="customerName.dirty && customerName.errors">
+            Name should consist of 2 to 10 characters and contain only letters(a-z,A-Z) </span>
+
+        <div class="content">
+            <h3>Contact Number:<span class="required">*</span></h3>
+            <input type="number" name="customerContactNo" #customerContactNo="ngModel"
+                [(ngModel)]="customerData.customerContactNo" [disabled]="!isContactEditMode" pattern="^\\d{10}$"
+                (change)="isDirty=true" required>
+            <button class="edit-button" (click)="toggleEditMode('contact')"><span
+                    class="material-symbols-outlined">edit</span></button>
+        </div>
+
+        <span class="validation-msg" *ngIf="customerContactNo.dirty && customerContactNo.errors">
+            Contact number should be of 10 digits </span>
+
+        <div class="content">
+            <h3>Email:<span class="required">*</span></h3>
+            <input type="text" name=customerEmailId #customerEmailId="ngModel"
+                [(ngModel)]="customerData.customerEmailId" [disabled]="!isEmailEditMode"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$" (change)="isDirty=true" required>
+            <button class=" edit-button" (click)="toggleEditMode('email')"><span
+                    class="material-symbols-outlined">edit</span></button>
+        </div>
+
+        <span class="validation-msg" *ngIf="customerEmailId.dirty && customerEmailId.errors">
+            Email should be valid </span>
+
+
+        <h3 class="content" style="margin-top: 5px;">Address:</h3>
+        <table class="table-style">
+            <tbody>
+                <tr class="table-column-head">
+                    <th>City<span class="required">*</span></th>
+                    <th>Street</th>
+                    <th>Pincode<span class="required">*</span></th>
+                    <th>Edit</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="customerCity" #customerCity="ngModel"
+                            [(ngModel)]="customerData.customerAddress.customerCity" [disabled]="!isAddressEditMode"
+                            pattern="^[a-zA-Z\\s-]{2,10}$" (change)="isDirty=true" required>
+                    </td>
+                    <td>
+                        <input type="text" name="customerStreet" #customerStreet="ngModel"
+                            [(ngModel)]="customerData.customerAddress.customerStreet" [disabled]="!isAddressEditMode"
+                            pattern="^[a-zA-Z0-9\\s-]*$" (change)="isDirty=true">
+                    </td>
+                    <td>
+                        <input type="number" name="customerPinCode" #customerPinCode="ngModel"
+                            [(ngModel)]="customerData.customerAddress.customerPinCode" [disabled]="!isAddressEditMode"
+                            pattern="^\\d{6}$" (change)="isDirty=true" required>
+                    </td>
+                    <td>
+                        <button class="edit-button" (click)=" toggleEditMode('address')">
+                            <span class="material-symbols-outlined">edit</span></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <span class="address-validation" *ngIf="customerCity.dirty && customerCity.errors">
+            City should consist of 2 to 10 characters or hyphens(a-z,A-Z,-) </span>
+
+        <span class="address-validation" *ngIf="customerStreet.dirty && customerStreet.errors">
+            Street should consist of alphanumeric characters or hyphens (a-z, A-Z, 0-9,-) </span>
+
+        <span class="address-validation" *ngIf="customerPinCode.dirty && customerPinCode.errors">
+            Pin-code should be of 6 digits </span>
+
+
+        <h3 class="content">Login Details:</h3>
+        <div class="content">
+            <h3>Username:<span class="required">*</span></h3>
+            <input type="text" name="username" #username="ngModel" [(ngModel)]="customerData.signUp.username"
+                [disabled]="!isUsernameEditMode" pattern="^[a-zA-Z0-9_]{3,10}$" (change)="isDirty=true" required>
+            <button class="edit-button" (click)="toggleEditMode('username')"><span
+                    class="material-symbols-outlined">edit</span></button>
+        </div>
+
+        <span class="validation-msg" *ngIf="username.dirty && username.errors">
+            Username should consist of 3 to 10 alphanumeric characters or underscores (a-z, A-Z, 0-9, _) </span>
+
+        <div class="content">
+            <h3>Password:<span class="required">*</span></h3>
+            <input type="text" name="password" #password="ngModel" [(ngModel)]="customerData.signUp.password"
+                [disabled]="!isPasswordEditMode" minlength="8" (change)="isDirty=true" required>
+            <button class="edit-button" (click)="toggleEditMode('password')"><span
+                    class="material-symbols-outlined">edit</span></button>
+        </div>
+
+        <span class="validation-msg" *ngIf="password.dirty && password.errors">
+            Password length should be minimum 8</span>
+    </form>
+</div>
+<button (click)="updateCustomer()" type="submit" class="update-button">Update</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <h1>Update Customer</h1>
+    <div class="container form-height">
+        <div class="form-group">
+            <label for="customerName">Name</label>
+            <input type="text" id="customerName" name="customerName" class="form-control"
+                [(ngModel)]="customerData.customerName">
+        </div>
+        <div class="form-group">
+            <label for="customerContactNo">Contact Number</label>
+            <input type="text" id="customerContactNo" name="customerContactNo" class="form-control"
+                [(ngModel)]="customerData.customerContactNo">
+        </div>
+
+        <div class="form-group">
+            <label for="customerEmailId">Contact Number</label>
+            <input type="text" id="customerEmailId" name="customerEmailId" class="form-control"
+                [(ngModel)]="customerData.customerEmailId">
+        </div>
+
+        <div class="form-group">
+            <label for="customerCity">City</label>
+            <input type="text" id="customerCity" name="customerCity" class="form-control"
+                [(ngModel)]="customerData.customerAddress.customerCity">
+        </div>
+
+        <div class="form-group">
+            <label for="customerStreet">Street</label>
+            <input type="text" id="customerStreet" name="customerStreet" class="form-control"
+                [(ngModel)]="customerData.customerAddress.customerStreet">
+        </div>
+
+        <div class="form-group">
+            <label for="customerPinCode">Pin Code</label>
+            <input type="text" id="customerPinCode" name="customerPinCode" class="form-control"
+                [(ngModel)]="customerData.customerAddress.customerPinCode">
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control"
+                [(ngModel)]="customerData.signUp.username">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control"
+                [(ngModel)]="customerData.signUp.password">
+        </div>
+    </div>   
+</div>
+<button (click)="updateCustomer()" style="margin-left: 810px;background-color: green;"
+        class="btn btn-primary">Update</button> -->

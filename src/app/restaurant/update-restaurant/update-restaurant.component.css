@@ -1,0 +1,257 @@
+.container {
+  width: 70%;
+  height: 75%;
+  margin: 0 auto;
+  background-color: rgba(0, 128, 0, 0.081);
+  overflow: auto;
+
+}
+
+h1 {
+  color: brown;
+  text-align: center;
+  margin-top: 5px;
+}
+
+h3 {
+  margin-left: 50px;
+  font-family: math;
+  color: green;
+}
+small{
+  color:grey
+}
+.restaurant-name {
+  display: flex;
+  align-items: center;
+  color: green;
+  height: 45px;
+}
+
+.restaurant-contact-number {
+  display: flex;
+  align-items: center;
+  color: green
+}
+
+.restaurant-location {
+  display: flex;
+  align-items: center;
+  color: green
+}
+
+.restaurant-image {
+  display: flex;
+  align-items: center;
+  color: green
+}
+
+.restaurant-image input{
+  margin-left: 5px;
+}
+
+.restaurant-image img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.menu-item-add img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.menu-item-add h3 {
+  color: grey;
+  margin-left: 60px;
+  font-family: math;
+  margin-bottom: 0px;
+}
+
+.menu-item-add label {
+  margin-left: 60px;
+  font-family: math;
+  color: darkgreen;
+}
+
+.menu-item-add input {
+  width:50%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.menu-item-add button {
+  margin-top: 10px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+  font-family: math;
+  font-size: initial;
+  background-color: yellowgreen;
+  color: black;
+  padding: 3px; 
+  cursor: pointer;
+}
+
+.menu-item-add button:hover{
+  background-color: green;
+  border: none;
+}
+
+.restaurant-cuisine-type {
+  display: flex;
+  align-items: center;
+  color: green
+}
+
+.restaurant-menu-item{
+  color: green;
+  font-family: math;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 6px;
+  width: 50%;
+  margin-bottom: 0px;
+}
+
+.edit-button {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: green;
+}
+
+.edit-button:hover {
+  border: none;
+  background-color: rgb(3, 19, 3);
+}
+
+.remove-button {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: brown;
+}
+
+.remove-button:hover {
+  border: none;
+  background-color: rgb(51, 15, 15);
+}
+
+.cuisine-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-left: 45px;
+  font-family: math;
+}
+
+.cuisine-table th {
+  color: green;
+  font-size: 18px;
+  border: 1px solid rgb(127, 238, 127);
+  padding: 8px;
+  text-align: left;
+}
+
+.cuisine-table td {
+  border: 1px solid rgb(127, 238, 127);
+  padding: 8px;
+  text-align: left;
+}
+
+.menu-table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-left: 45px;
+  width: 85%;
+}
+
+.menu-table th {
+  color: green;
+  font-size: 18px;
+  border: 1px solid rgb(127, 238, 127);
+  padding: 8px;
+  text-align: left;
+}
+
+.menu-table td {
+  border: 1px solid rgb(127, 238, 127);
+  padding: 8px;
+  text-align: left;
+}
+
+.menu-column-head th {
+  color: rgb(93, 91, 91);
+}
+
+.update-button {
+  margin-left: 45%;
+  background-color: green;
+  cursor: pointer;
+  color: white;
+  padding: 10px 15px;
+  margin-top: 15px;
+  font-family: system-ui;
+  font-size: 15px;
+}
+
+.update-button:hover {
+  border: none;
+  background-color: rgb(5, 36, 5)
+}
+
+.cuisine-type-select{
+  font-family: math;
+}
+
+.cuisine-type-select h3 {
+  color: grey;
+  margin-left: 60px ;
+}
+
+.select-checkbox{
+  margin-left: 60px;
+}
+
+.select-checkbox option::before {
+  content: "\2610";
+  width: 1.3em;
+  display: inline-block;
+  font-family: FontAwesome;   
+}
+
+.select-checkbox option:checked::before {
+  content: "\2611";
+}
+
+
+.validation-msg {
+  color: #f44336;
+  margin-left: 50px;
+}
+
+.required {
+  color: rgb(173, 4, 4);
+  margin-top: 10px;
+}
+
+.description{
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.description small{
+  font-size: 15px;
+}
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<div class="header">
+  <h2>Update Restaurant</h2>
+  <button mat-icon-button mat-dialog-close aria-label="Close">
+    <mat-icon><span class="material-symbols-outlined">
+        close
+      </span></mat-icon>
+  </button>
+</div>
+<p>Please enter your Restaurant ID <span class="material-symbols-outlined">east</span></p>
+<label for="restaurantId">Restaurant ID:</label>
+<input type="number" [(ngModel)]="restaurantId" required /> <br>
+<button (click)="RouteToUpdate()">Submit</button>

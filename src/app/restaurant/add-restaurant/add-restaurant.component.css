@@ -1,0 +1,197 @@
+.container {
+    display: flex;
+
+}
+
+.RegistrationForm {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    max-height: 580px;
+    overflow-y: auto;
+    margin-top: 25px;
+    background-color: gainsboro;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    margin-right: 50px;
+}
+
+.Image {
+    width: 50%
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 0px;
+    margin-left: 60%;
+    color: #1c4bd7;
+    font-family: cursive;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: monospace;
+    color: currentColor;
+    margin-bottom: 8px;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: aliceblue;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    font-family: monospace;
+}
+
+
+button {
+    background-color: #5084bd;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-family: monospace;
+}
+
+button:hover {
+    background-color: #1c4bd7;
+}
+
+.message-container {
+    flex-direction: row;
+    margin-left: 38%;
+    display: inline-block;
+}
+.message-container p{
+   color:blue;
+}
+.material-symbols-outlined {
+    vertical-align: middle; 
+  }
+.alert {
+    padding: 10px;
+    border-radius: 4px;
+    align-items: center;
+    width: 350px;
+    height: 20px;
+    margin-top: 25px;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.alert-danger {
+    background-color: #f44336;
+    color: #fff;
+}
+
+#restaurantMenuItemPrice {
+    height: 35px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.Register {
+    background-color: #0c9071;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 10px;
+    font-family: system-ui;
+    margin-top: 20px;
+    margin-right: 200px;
+}
+
+p {
+    margin-top: 2px;
+    margin-left: 5px;
+    color: darkslategrey;
+    font-family: cursive;
+}
+
+.cuisine-type-select {
+    display: flex;
+}
+
+.cuisine-type-select button {
+    height: 40px;
+}
+
+.success {
+    margin-left: 20px;
+    color: green;
+    margin-top: 20px;
+}
+
+.failed {
+    margin-left: 10px;
+    color: brown;
+    margin-top: 20px;
+}
+
+select {
+    width: 200px;
+    height: 80px;
+}
+
+.select-checkbox option::before {
+    content: "\2610";
+    width: 1.3em;
+    display: inline-block;
+    font-family: FontAwesome;
+}
+
+.select-checkbox option:checked::before {
+    content: "\2611";
+}
+
+.required {
+    color: rgb(173, 4, 4);
+    margin-top: 10px;
+}
+
+.validation-msg {
+    color: #f44336;
+    margin-left: 7px;
+}
+
+.upload-image {
+    display: flex;
+    align-items: center;
+}
+
+.upload-image img {
+    width: 50px;
+    height: 50px;
+}
+

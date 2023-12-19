@@ -1,0 +1,59 @@
+
+.material-symbols-outlined{
+    vertical-align: middle;
+}
+
+.custom-swal-content {
+    color: red;
+    font-size: 16px;
+  }
+
+p{
+    margin-left: 50px;
+    color: blue;
+    font-size: large;
+    font-family: cursive;
+}
+
+label{
+    margin-left: 45px;
+    font-family: cursive;
+    font-size: medium;
+}
+
+input{
+    margin-left: 10px;
+}
+
+button{
+    margin-top: 10px;
+    margin-left: 220px;
+    padding: 5px;
+    background: burlywood;
+    color: revert-layer;
+    cursor: pointer;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 40px;
+}
+
+ .header h2{
+    color: green;
+    font-family: cursive;
+    margin-top: 10px;
+    margin-left: 70px;
+ }
+
+ .header button{
+    margin-left: 70px;
+    background: white;
+    padding: 0px;
+    cursor: pointer;
+ }
+
+
+ 

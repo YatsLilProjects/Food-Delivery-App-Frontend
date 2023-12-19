@@ -1,0 +1,74 @@
+<header>
+        <nav class="navbar menu">
+                <div class="headmenu">
+                        <div class="navbar-brand">
+                                <img src="assets\Icons\food-delivery.png" alt="Logo">
+                                <h1>Mumbai's Best Food</h1>
+                        </div>
+                        <ul>
+                                <li><a *ngIf="logInService.isUserLoggedIn()" routerLink="/welcome" class="nav-link">
+                                                <span class="material-symbols-outlined">home</span>
+                                                Home</a></li>
+
+                                <li><a *ngIf="logInService.isUserLoggedIn()" routerLink="/confirm-order"
+                                                class="nav-link"><span class="material-symbols-outlined">
+                                                        shopping_cart
+                                                        <mat-badge class="custom-badge" [matBadge]="totalNoOfCarts"
+                                                                matBadgeSize="small" matBadgeColor="accent">
+                                                        </mat-badge>
+                                                </span>View Cart
+                                        </a></li>
+
+                                <li><a *ngIf="logInService.isUserLoggedIn()" routerLink="/order-details"
+                                                class="nav-link"><span class="material-symbols-outlined">
+                                                        list_alt
+                                                </span>Your Orders</a></li>
+
+                                <li><a *ngIf="logInService.isAdminLoggedIn()" routerLink="/admin-dashboard/Admin">
+                                                <span class="material-symbols-outlined">
+                                                        Dashboard
+                                                </span>Dashboard</a></li>
+
+                                <li><a *ngIf="logInService.isAdminLoggedIn()" routerLink="/customers" class="nav-link">
+                                                <span class="material-symbols-outlined">
+                                                        person
+                                                </span>View Customers</a></li>
+
+                                <li><a *ngIf="logInService.isAdminLoggedIn()" routerLink="/view-restaurants"
+                                                class="nav-link"><span
+                                                        class="material-symbols-outlined">restaurant</span>
+                                                View Restaurants</a></li>
+
+                                <li><a *ngIf="!logInService.isUserLoggedIn() && !logInService.isAdminLoggedIn()"
+                                                routerLink="/login" class="nav-link">Login</a></li>
+
+                                <li><a *ngIf="!logInService.isUserLoggedIn() && !logInService.isAdminLoggedIn()"
+                                                routerLink="/signup" class="nav-link">SignIn</a></li>
+                        </ul>
+                </div>
+                <div class="searchcontainer" *ngIf="logInService.isUserLoggedIn()">
+                        <input type="text" placeholder="Search for a Restaurant by Name, Location, or Cuisine Type"
+                                [(ngModel)]="searchItem">
+                        <button (click)="findRestaurantsByCriteria()">
+                                <span class="material-symbols-outlined">search</span>
+                        </button>
+                </div>
+                <div *ngIf="logInService.isUserLoggedIn()">
+                        <ul>
+                                <li><a routerLink="/add-restaurant" class="nav-link"><span
+                                                        class="material-symbols-outlined">restaurant</span>Add
+                                                Restaurant</a></li>
+                        </ul>
+                </div>
+                <div class="headmenu" *ngIf="logInService.isUserLoggedIn() || logInService.isAdminLoggedIn()">
+                        <ul>
+                                <li><a (click)="routeToCustomerprofile()" class="nav-link profile"><span class="material-symbols-outlined">
+                                                        person
+                                                </span>{{customerName}}</a></li>
+                                <li><a routerLink="/logout" class="nav-link"><span class="material-symbols-outlined">
+                                                        logout
+                                                </span>Logout</a></li>
+                        </ul>
+                </div>
+        </nav>
+</header>

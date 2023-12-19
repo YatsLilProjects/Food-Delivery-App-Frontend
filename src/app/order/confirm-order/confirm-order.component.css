@@ -1,0 +1,168 @@
+.container{
+  display: flex;
+  margin-left: 38%;
+  margin-top: 100px; 
+}
+
+.Order {
+  background-color: rgba(234, 115, 222, 0.448);
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.Order h1 {
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: crimson;
+}
+
+.restaurant-info {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.restaurant-info img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  margin-left: 18%;
+}
+
+.restaurant-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-data h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 0px;
+  color: rgb(20, 57, 220);
+  margin-bottom: 0px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.restaurant-data h3 {
+  margin: 5px;
+  font-weight: lighter;
+  color: grey;
+}
+
+.menu-item-details li {
+  list-style: none;
+}
+
+.menu-item-details p {
+  font-weight: 300;
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.special-instructions {
+  display: flex;
+  flex-direction: row;
+}
+
+.special-instructions input {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.special-instructions button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.special-instructions button:hover {
+  background-color: #0056b3;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-color: #000;
+  margin: 10px 0;
+}
+
+li {
+  list-style: none;
+}
+
+.order-button{
+  display: flex;
+}
+
+
+.order-button .AddOrder {
+  background-color: green;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 35%;
+}
+
+.order-button .CancelOrder {
+  background-color:brown;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+.order-button button:hover {
+  background-color: #0056b3;
+}
+
+.alert {
+  padding: 10px;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.alert-success {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.alert-danger {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.empty-cart-message {
+  background-color: #f7f7f7; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  text-align: center;
+  font-size: 16px; 
+  color: #333; 
+  margin-top: 10px; 
+}
+
+
+.empty-cart-message p {
+  margin: 0; 
+}

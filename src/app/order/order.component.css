@@ -1,0 +1,124 @@
+.restaurant {
+    background-color: rgba(128, 128, 128, 0.107);
+}
+
+.RestaurantCuisineType {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+}
+
+.RestaurantLocation {
+    display: flex;
+    flex-direction: row;
+}
+
+.RestaurantContactNo {
+    display: flex;
+    flex-direction: row;
+}
+
+.RestaurantMenuItem {
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.RestaurantMenuItems {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: auto;
+   
+}
+
+.RestaurantMenuItems h2 {
+    margin-left: 600px;
+    color: green;
+    margin-top: 30px;
+    font-size: medium;
+}
+
+.RestaurantMenuItems img {
+    max-height: 90px;
+    max-width: 95px;
+    margin-left: 50px;
+    border-radius: 10px;
+    margin-right: 1em;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-left: 600px;
+    margin-bottom: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: brown;
+}
+
+h2 {
+    display: flex;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: grey;
+    font-size: .93rem;
+}
+
+h3 {
+    margin-left: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: grey;
+    font-size: medium;
+}
+
+p {
+    margin-left: 600px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.menu-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px dotted #000;
+}
+
+
+hr {
+    width: 100%;
+    border: none;
+    border-top: 3px solid #000;
+}
+
+.ViewCart {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ViewCart:hover {
+    color: yellow;
+}
+
+.alert {
+    background-color: #dff0d8; 
+    border: 1px solid #3c763d; 
+    color: #3c763d; 
+    padding: 10px;
+    text-align: center;
+  }

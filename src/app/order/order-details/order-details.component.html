@@ -1,0 +1,39 @@
+<h2>Previously Ordered Details</h2>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Restaurant Name</th>
+        <th>Total Cost</th>
+        <th>Order Date</th>
+        <th>Special Instructions</th>
+        <th>Ordered Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.restaurant.restaurantName }}</td>
+        <td>{{ order.totalCost }}</td>
+        <td>{{ order.orderDate | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let instruction of order.specialInstructions">{{ instruction }}</li>
+          </ul>
+        </td>
+        <td class="item-list">
+          <ul>
+            <ng-container *ngFor="let item of getUniqueItems(order)">
+              <li>
+                {{ item }} 
+                ({{ countItemOccurrences(order, item) }})
+              </li>
+            </ng-container>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="showErrorMessage" class="alert alert-success">
+  {{ errorMessage }}
+</div>

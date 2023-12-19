@@ -1,0 +1,106 @@
+<div class="Header">
+  <img src="assets\Icons\customer-icon.png" />
+  <h1>Sign in</h1>
+</div>
+<div class="RegistrationForm">
+  <form (ngSubmit)="addCustomerHandler()" [formGroup]="registerForm">
+
+    <div class="form-group">
+      <img src="assets\Icons\user.png" />
+      <input type="text" placeholder="Enter name" (change)="isDirty=true" formControlName="name">
+      <span class="required">*</span>
+    </div>
+
+    <span class="validation-msg" *ngIf="registerFormControl['name'].errors && registerFormControl['name'].dirty">
+      Name should consist of 2 to 10 characters and contain only letters(a-z,A-Z)</span>
+
+    <div class="form-group">
+      <img src="assets\Icons\contact.png" />
+      <input type="number" placeholder="Enter contact number" (change)="isDirty=true" formControlName="contact">
+      <span class="required">*</span>
+    </div>
+
+    <span class="validation-msg" *ngIf="registerFormControl['contact'].errors && registerFormControl['contact'].dirty">
+      Contact number should be of 10 digits</span>
+
+    <div class="form-group">
+      <img src="assets\Icons\mail.png" />
+      <input type="email" placeholder="Enter email id" (change)="isDirty=true" formControlName="email">
+      <span class="required">*</span>
+    </div>
+
+    <span class="validation-msg" *ngIf="registerFormControl['email'].errors && registerFormControl['email'].dirty">
+      Email should be valid</span>
+
+    <div class="form-group">
+      <img src="assets\Icons\city.png" />
+      <input type="text" placeholder="Enter city" (change)="isDirty=true" formControlName="city">
+      <span class="required">*</span>
+    </div>
+
+    <span class="validation-msg" *ngIf="registerFormControl['city'].errors && registerFormControl['city'].dirty">
+      City should consist of 2 to 10 characters or hyphens(a-z,A-Z,-)
+    </span>
+
+    <div class="form-group">
+      <img src="assets\Icons\street.png" />
+      <input type="text" placeholder="Enter street" (change)="isDirty=true" formControlName="street">
+    </div>
+
+    <span class="validation-msg" *ngIf="registerFormControl['street'].errors && registerFormControl['street'].dirty">
+      Street should consist of alphanumeric characters or hyphens (a-z, A-Z, 0-9,-)
+    </span>
+
+    <div class="form-group">
+      <img src="assets\Icons\pincode.png" />
+      <input type="number" placeholder="Enter pin code" (change)="isDirty=true" formControlName="pincode">
+      <span class="required">*</span>
+    </div>
+
+    <span class="validation-msg" *ngIf="registerFormControl['pincode'].errors && registerFormControl['pincode'].dirty">
+      Pin-code should be of 6 digits</span>
+
+    <div class="form-group">
+      <img src="assets\Icons\username.png" />
+      <input type="text" placeholder="Set username" (change)="isDirty=true" formControlName="username">
+      <span class="required">*</span>
+    </div>
+    <span class="validation-msg"
+      *ngIf="registerFormControl['username'].errors && registerFormControl['username'].dirty">
+      Username should consist of 3 to 10 alphanumeric characters or underscores (a-z, A-Z, 0-9, _) </span>
+
+    <div class="form-group">
+      <img src="assets\Icons\password.png" />
+      <input type="password" placeholder="Set password" (change)="isDirty=true" formControlName="password">
+      <span class="required">*</span>
+    </div>
+    <span class="validation-msg"
+      *ngIf="registerFormControl['password'].errors && registerFormControl['password'].dirty">
+      Password length should be minimum 8 </span>
+
+    <div>
+      <button type="submit" [ngStyle]="{'background-color': registerForm.valid ? '#4CAF50' : '#808080'}"
+        [disabled]="!registerForm.valid">
+        Register
+      </button>
+    </div>
+    
+    <p>Already have an account?<a routerLink="/login" style="color: red;">Log in</a></p>
+  </form>
+</div>
+
+<div *ngIf="showSuccessMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="showError" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
+
+
+<!-- <button (click)="isDirty=false" type="submit" class="btn"
+      [ngStyle]="{'background-color': registrationForm.form.valid ? '#4CAF50' : '#808080'}"
+      [disabled]="!registrationForm.form.valid">
+      Register
+    </button> -->

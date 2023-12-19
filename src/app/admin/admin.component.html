@@ -1,0 +1,49 @@
+
+<div class="container">
+<h1>Hi , {{adminName}}. Welcome Back!!</h1>
+<h3>Dashboard</h3>
+    <div class="Analysis">
+        <div class="TotalOrders">
+            <img src="assets\Admin Dashboard Images\TotalOrders.jpg">
+            <div class="OrderInfo" style="width: 50px;">
+                <span class="NoOfOrders">{{totalOrders}}</span>
+                <span class="Text">Total Orders</span>
+            </div>
+        </div>
+        <div class="TotalRestaurants">
+            <img src="assets\Admin Dashboard Images\TotalRestaurants.png">
+            <div class="RestaurantInfo" style="width: 50px;">
+                <span class="NoOfRestaurants">{{totalRestaurants}}</span>
+                <span class="Text">Total Restaurants</span>
+            </div>
+        </div>
+        <div class="TotalCustomers">
+            <img src="assets\Admin Dashboard Images\TotalCustomers.jpg">
+            <div class="CustomerInfo" style="width: 50px;">
+                <span class="NoOfCustomers">{{totalCustomers}}</span>
+                <span class="Text">Total Customers</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="TrackOrders">
+        <h3>Track Orders</h3>
+        <p class="blinking-text">Select Filters To Generate Customer Order Data!!</p>
+        <div>
+            <label for="month">Select Month:</label>
+            <select id="month" name="month" [(ngModel)]="selectedMonth">
+                <option value="" disabled selected>Select a Month</option>
+                <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+            </select>
+            <label for="month">Select Year:</label>
+            <select id="year" name="year" [(ngModel)]="selectedYear">
+                <option value="" disabled selected>Select a Year</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+        <button (click)="getOrderDetailsByMonthAndYear()">Download File</button>
+    </div>
+    <br>
+    <hr>
+</div>

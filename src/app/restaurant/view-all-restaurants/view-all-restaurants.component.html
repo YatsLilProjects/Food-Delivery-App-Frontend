@@ -1,0 +1,75 @@
+<div class="upper_container">
+  <div class="search">
+    <input type="text" placeholder="Search anything in a table" [(ngModel)]="searchItem">
+    <button (click)="searchRestaurants()">Search</button>
+  </div>
+  <div class="page_size">
+    <label for="pageDropdown">Select a page size:</label>
+    <select id="pageDropdown" [value]="selectedPageSize" [(ngModel)]="selectedPageSize" (change)="onPageSizeChange()">
+      <option *ngFor="let pageSize of pageSizeOptions" [value]="pageSize">{{ pageSize }}</option>
+    </select>
+  </div>
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="pageNumber === 1"
+      [ngClass]="{'disabled-button': pageNumber === 1}">Prev</button>
+    <button *ngFor="let pageSize of pageSizeOptions" (click)="getRestaurantsByPages(pageSize/5)"
+      [class.active]="pageSize/5 === pageNumber">{{ pageSize/5 }}</button>
+    <button (click)="nextPage()" [disabled]="pageNumber === totalPages"
+      [ngClass]="{'disabled-button': pageNumber === totalPages}">Next</button>
+  </div>
+  <div class="add_restaurant">
+    <button (click)="addNewRestaurant()" class="add_new_button"><span class="material-symbols-outlined">add</span>Add
+      New
+      Restaurant</button>
+  </div>
+</div>
+<hr>
+<div class="mid_container">
+  <table class="restaurant">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th (click)="sort('restaurantName')">Restaurant Name<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('restaurantContactNo')">Restaurant Contact Number<span class="material-symbols-outlined">
+            sort</span></th>
+        <th (click)="sort('restaurantLocation')">Restaurant Location<span class="material-symbols-outlined"> sort</span>
+        </th>
+        <th (click)="sort('restaurantImage')">Restaurant Image<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('restaurantCuisineType.cuisineType')">Restaurant Cuisine Type<span
+            class="material-symbols-outlined"> sort</span></th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restaurant of restaurants; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ restaurant.restaurantName }}</td>
+        <td>{{ restaurant.restaurantContactNo }}</td>
+        <td>{{ restaurant.restaurantLocation }}</td>
+        <td><img src="{{ restaurant.restaurantImage }}"></td>
+        <td>
+          <ul>
+            <li *ngFor="let cuisineType of restaurant.cuisineTypeData; let last = last">
+              {{cuisineType.cuisineType}}{{!last ? ',' : ''}}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button (click)="deleteRestaurant(restaurant.restaurantId)" class="delete_button">Delete</button>
+        </td>
+        <td>
+          <button (click)="showUpdateForm(restaurant)" class="update_button">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="showLoadDataSuccessMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="showErrorMessage" class="alert alert-error">
+  {{ errorMessage }}
+</div>

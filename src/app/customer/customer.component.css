@@ -1,0 +1,298 @@
+.upper_container {
+  display: flex;
+  height: 70px;
+  width: 100%;
+  align-items: center
+}
+
+.search input {
+  width: 800px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 60px;
+  margin-right: 10px;
+}
+
+.search button {
+  padding: 5px 5px;
+  margin-right: 90px;
+  margin-top: 20px;
+  background-color: coral;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.search button:hover {
+  background-color: orangered;
+  border: none;
+}
+
+.add_new_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: rgb(149 135 135);
+  color: white;
+  font-size: 15px;
+  font-family: sans-serif;
+  margin-left: 300px;
+  padding: 5px 5px;
+}
+
+.add_new_button:hover {
+  background-color: grey;
+  cursor: pointer;
+  border: none;
+}
+
+.page_size {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin-left: 5px;
+}
+
+.pagination button:hover {
+  background-color: gray;
+  border: none;
+  cursor: pointer;
+}
+
+.mid_container {
+  overflow-y: auto;
+  height: 70%;
+}
+
+.customer {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.customer th,
+.customer td {
+  border: 3px solid #d5b810;
+  padding: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+
+}
+
+.material-symbols-outlined {
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.customer th {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.delete_button {
+  background-color: brown;
+  color: white;
+  font-size: 15px;
+  padding: 8px 8px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.update_button {
+  background-color: green;
+  color: white;
+  font-size: 15px;
+  padding: 8px 8px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.delete_button:hover {
+  background-color: red;
+  cursor: pointer;
+  border: none;
+}
+
+.update_button:hover {
+  background-color: rgb(26, 83, 26);
+  cursor: pointer;
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border: 1px solid #3c763d;
+  color: #3c763d;
+  padding: 10px;
+  text-align: center;
+}
+
+.alert-error {
+  background-color: rgba(255, 0, 0, 0.22);
+  border: 1px solid brown;
+  color: brown;
+  padding: 10px;
+  text-align: center;
+}
+
+.disabled-button {
+  background-color: #CCCCCC;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+ul {
+  height: 160px;
+  overflow-y: scroll;
+}
+
+
+
+
+
+
+
+
+/* 
+.CustomerTable {
+  overflow-y: scroll;
+  height: 30%;
+  margin-top: 10px;
+}
+
+.Customer {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+.Customer th,
+.Customer td {
+  border: 3px solid #d5b810;
+  padding: 5px;
+  text-align: left;
+  font-size: 20px;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.Customer th {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input {
+  width: 60%;
+  padding: 9px;
+  margin-left: 50px;
+  margin-right: 10px;
+}
+
+.pagination {
+  margin-left: 83%;
+
+}
+
+.pagination button {
+  margin: 10px;
+}
+
+.alert {
+  background-color: #dff0d8;
+  border: 1px solid #3c763d;
+  color: #3c763d;
+  padding: 10px;
+  text-align: center;
+}
+
+select {
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  margin-left: 62%;
+  font-size: large;
+  color: green;
+}
+
+.page-size {
+  margin-left: 60%;
+}
+
+.page-size label {
+  margin-left: 60%;
+}
+
+.SearchBox {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.SearchButton {
+  background-color: coral;
+}
+
+.AddNewButton
+{
+  margin-left: 250px;
+  background-color: grey;
+  padding: 10px 8px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  align-items: center;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+.material-symbols-outlined {
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.disabled-button {
+  background-color: #CCCCCC; 
+  color: #666666; 
+  cursor: not-allowed;
+} */

@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+}
+
+.RegistrationForm {
+    margin: 0 auto;
+    padding: 20px;
+    margin-left: 550px;
+    width: 800px;
+    height: 650px;
+    background-color: #b9f9f9;
+}
+
+label {
+    font-weight: bold;
+    color: black;
+    font-size: large;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 20px
+}
+
+button {
+    background-color: #24870a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 43%;
+    margin-top: 20px;
+    font-size: large;
+    font-family: system-ui;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    background-color: #dff0d8;
+    border: 1px solid #3c763d;
+    color: #3c763d;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    color: brown;
+
+}
+
+.Header img {
+    width: 60px;
+    height: 60px;
+    margin-left: 850px;
+    margin-right: 10px;
+}
+
+p {
+    margin-left: 34%;
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+.form-group img {
+    margin-right: 5px;
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.required {
+    color: red;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.alert-danger {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.validation-msg {
+    color: #f44336;
+    margin-left: 32px;
+}

@@ -1,0 +1,146 @@
+<div class="upper_container">
+  <div class="search">
+    <input type="text" placeholder="Search anything in a table" [(ngModel)]="searchItem">
+    <button (click)="searchCustomers()">Search</button>
+  </div>
+  <div class="page_size">
+    <label for="pageDropdown">Select a page size:</label>
+    <select id="pageDropdown" [value]="selectedPageSize" [(ngModel)]="selectedPageSize" (change)="onPageSizeChange()">
+      <option *ngFor="let pageSize of pageSizeOptions" [value]="pageSize">{{ pageSize }}</option>
+    </select>
+  </div>
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="pageNumber === 1"
+      [ngClass]="{'disabled-button': pageNumber === 1}">Prev</button>
+    <button *ngFor="let pageSize of pageSizeOptions" (click)="getCustomersByPages(pageSize/5)"
+      [class.active]="pageSize/5 === pageNumber">{{ pageSize/5 }}</button>
+    <button (click)="nextPage()" [disabled]="pageNumber === totalPages"
+      [ngClass]="{'disabled-button': pageNumber === totalPages}">Next</button>
+  </div>
+  <div class="add_restaurant">
+    <button (click)="addNewCustomer()" class="add_new_button"><span class="material-symbols-outlined">add</span>Add
+      New
+      Customer</button>
+  </div>
+</div>
+<hr>
+<div class="mid_container">
+  <table class="Customer">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th (click)="sort('customerName')">Name<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerContactNo')">Contact Number<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerEmailId')">Email Id<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerAddress.customerCity')">City<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerAddress.customerStreet')">Street<span class="material-symbols-outlined"> sort</span>
+        </th>
+        <th (click)="sort('customerAddress.customerPinCode')">Pin Code<span class="material-symbols-outlined">
+            sort</span></th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.customerContactNo}}</td>
+        <td>{{customer.customerEmailId}}</td>
+        <td>{{customer.customerAddress.customerCity}}</td>
+        <td>{{customer.customerAddress.customerStreet}}</td>
+        <td>{{customer.customerAddress.customerPinCode}}</td>
+        <td><button (click)="deleteCustomer(customer.customerId)"  class="delete_button">Delete</button>
+        </td>
+        <td><button (click)="showUpdateForm(customer)"  class="update_button">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="showLoadDataSuccessMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="showErrorMessage" class="alert alert-success">
+  {{ errorMessage }}
+</div>
+
+
+
+
+
+
+
+<!-- <div class="SearchBox">
+  <input type="text" placeholder="Search anything in a table" [(ngModel)]="searchItem">
+  <button class="SearchButton" (click)="searchCustomers()">Search</button>
+  <div>
+    <button (click)="addNewCustomer()" class="AddNewButton"><span class="material-symbols-outlined">add</span>Add New
+      Customer</button>
+  </div>
+</div>
+<hr>
+<div class="CustomerTable">
+  <table class="Customer">
+    <thead>
+      <tr>
+        <th>Sr. No.</th>
+        <th (click)="sort('customerName')">Name<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerContactNo')">Contact Number<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerEmailId')">Email Id<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerAddress.customerCity')">City<span class="material-symbols-outlined"> sort</span></th>
+        <th (click)="sort('customerAddress.customerStreet')">Street<span class="material-symbols-outlined"> sort</span>
+        </th>
+        <th (click)="sort('customerAddress.customerPinCode')">Pin Code<span class="material-symbols-outlined">
+            sort</span></th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.customerContactNo}}</td>
+        <td>{{customer.customerEmailId}}</td>
+        <td>{{customer.customerAddress.customerCity}}</td>
+        <td>{{customer.customerAddress.customerStreet}}</td>
+        <td>{{customer.customerAddress.customerPinCode}}</td>
+        <td><button (click)="deleteCustomer(customer.customerId)" style="background-color:brown">Delete</button>
+        </td>
+        <td><button (click)="showUpdateForm(customer)" style="background-color:darkgreen">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="page-size">
+    <label for="pageDropdown">Select a page size:</label>
+    <select id="pageDropdown" [value]="selectedPageSize" [(ngModel)]="selectedPageSize" (change)="onPageSizeChange()">
+      <option *ngFor="let pageSize of pageSizeOptions" [value]="pageSize">{{ pageSize }}</option>
+    </select>
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="pageNumber === 1"
+      [ngClass]="{'disabled-button': pageNumber === 1}">Prev</button>
+    <button *ngFor="let pageSize of pageSizeOptions" (click)="getCustomersByPages(pageSize/5)"
+      [class.active]="pageSize/5 === pageNumber">{{ pageSize/5 }}</button>
+    <button (click)="nextPage()" [disabled]="pageNumber === totalPages"
+      [ngClass]="{'disabled-button': pageNumber === totalPages}">Next</button>
+  </div>
+
+</div>
+
+<app-update-customer *ngIf="showUpdate" [customerData]="selectedCustomer"></app-update-customer>
+
+
+<div *ngIf="showDeleteSuccess" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="showLoadDataSuccessMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="showErrorMessage" class="alert alert-success">
+  {{ errorMessage }}
+</div> -->

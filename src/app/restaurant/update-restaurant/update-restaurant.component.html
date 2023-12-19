@@ -1,0 +1,148 @@
+<h1> Update Restaurant </h1>
+
+<div class="container">
+  <form #editForm="ngForm">
+    <div class="restaurant-name">
+      <h3>Name:<span class="required">*</span></h3>
+      <input type="text" name="restaurantName" [(ngModel)]="restaurantService.selectedRestaurant.restaurantName"
+        [disabled]="!isNameEditMode" #restaurantName="ngModel" pattern="^[a-zA-Z0-9\s-_]{2,}$" (change)="isDirty=true">
+      <button class="edit-button" (click)="toggleEditMode('name')"><span
+          class="material-symbols-outlined">edit</span></button>
+    </div>
+    <span class="validation-msg" *ngIf="restaurantName.dirty && restaurantName.errors">
+      Restaurant name should consist of at least 2 alphanumeric characters, spaces, hyphens, or underscores</span>
+
+    <div class="restaurant-contact-number">
+      <h3>Contact:<span class="required">*</span></h3>
+      <input type="text" name=restaurantContactNo [(ngModel)]="restaurantService.selectedRestaurant.restaurantContactNo"
+        [disabled]="!isContactEditMode" #restaurantContactNo="ngModel" pattern="^\d{10}$" (change)="isDirty=true">
+      <button class="edit-button" (click)="toggleEditMode('contact')"><span
+          class="material-symbols-outlined">edit</span></button>
+    </div>
+    <span class="validation-msg" *ngIf="restaurantContactNo.dirty && restaurantContactNo.errors">
+      Contact number must be a 10-digit number</span>
+
+    <div class="restaurant-location">
+      <h3>Location:<span class="required">*</span></h3>
+      <input type="text" name=restaurantLocation [(ngModel)]="restaurantService.selectedRestaurant.restaurantLocation"
+        [disabled]="!isLocationEditMode" #restaurantLocation="ngModel" pattern="^[a-zA-Z0-9\\s-]*$"
+        (change)="isDirty=true">
+      <button class="edit-button" (click)="toggleEditMode('location')"><span
+          class="material-symbols-outlined">edit</span></button>
+    </div>
+    <span class="validation-msg" *ngIf="restaurantLocation.dirty && restaurantLocation.errors">
+      Location should consist of alphanumeric characters or hyphens (a-z, A-Z, 0-9,-)</span>
+
+    <div class="restaurant-image">
+      <h3>Image:</h3>
+      <input type="file" name="restaurantImage" (change)="onRestaurantImageSelected($event)" accept="image/*">
+      <img [src]="restaurantService.selectedRestaurant.restaurantImage" alt="Restaurant Image">
+    </div>
+  </form>
+
+  <h3>Cuisine Type:<span class="required">*</span><small>(You need to add atleast one cuisine type)</small></h3>
+  <div class="restaurant-cuisine-type">
+    <table class="cuisine-table">
+      <thead>
+        <tr>
+          <th>Cuisine Type You Already Have:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cuisine of restaurantService.selectedRestaurant.cuisineTypeData; let i = index">
+          <td>
+            <input type="text" [(ngModel)]="cuisine.cuisineType" [disabled]="!cuisine.isCuisineEditMode"
+              (change)="isDirty=true">
+            <button class="remove-button" (click)="removeCuisine(i)">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="cuisine-type-select">
+    <h3>Add More Cuisines?</h3>
+    <select multiple="" class="select-checkbox" size="4" [(ngModel)]="selectedCuisineIds">
+      <option value="" disabled>Select cuisine type</option>
+      <option *ngFor="let cuisineType of cuisineTypes" [value]="cuisineType.cuisineId">{{cuisineType.cuisineType}}
+      </option>
+    </select>
+  </div>
+
+  <h3>Menu Item:<span class="required">*</span><small>(You need to add atleast one menu item)</small></h3>
+  <div class="restaurant-menu-item">
+    <h3>Menu Items You Already Have:</h3>
+    <table class="menu-table">
+      <tbody>
+        <tr class="menu-column-head">
+          <th>Name<span class="required">*</span></th>
+          <th>Price<span class="required">*</span></th>
+          <th>Description</th>
+          <th>Image URL</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <tr *ngFor="let menuItem of restaurantService.selectedRestaurant.menuItems; let i = index">
+          <td style="width: 8%;">
+            <input style="width:100%;" type="text" name="menuItemName" [(ngModel)]="menuItem.menuItemName"
+              [disabled]="!menuItem.isMenuEditMode" (change)="isDirty=true">
+          </td>
+          <td style="width: 5%;">
+            <input style="width:100%;" type="text" [(ngModel)]="menuItem.menuItemPrice"
+              [disabled]="!menuItem.isMenuEditMode" (change)="isDirty=true">
+          </td>
+          <td style="width: 20%;">
+            <input style="width:100%;" type="text" [(ngModel)]="menuItem.menuItemDesc"
+              [disabled]="!menuItem.isMenuEditMode" (change)="isDirty=true">
+          </td>
+          <td style="width: 20%;">
+            <img [src]="menuItem.menuItemImage" alt="Menu Item Image"
+              style="width: 100px; height: 50px; margin-bottom: 10px;">
+            <input style="width: 100%;" type="file" (change)="onMenuItemImageSelected($event, i)" accept="image/*"
+              [disabled]="!menuItem.isMenuEditMode">
+          </td>
+          <td style="width: 5%;">
+            <button (click)="toggleEditModeForMenu(i)" class="edit-button">
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+          </td>
+          <td style="width: 5%;">
+            <button (click)="removeMenu(i)" class="remove-button">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </td>
+      </tbody>
+    </table>
+  </div>
+  <div class="description">
+    <small> [Menu item name should consist of alphanumeric characters,spaces or hyphens. (a-z, A-Z, 0-9,-)
+      , Menu item price must be a positive number.]</small><br>
+  </div>
+  <div class="menu-item-add">
+    <h3>Add More Menu Items?</h3>
+    <label for="restaurantMenuItemName">Menu Item Name:</label>
+    <input type="text" [(ngModel)]="menuItemName" placeholder="Enter menu item name" (change)="isDirty=true"
+      required><br>
+
+    <label for="restaurantMenuItemPrice">Menu Item Price:</label>
+    <input type="number" [(ngModel)]="menuItemPrice" placeholder="Enter menu item price" (change)="isDirty=true"
+      required><br>
+
+    <label for="restaurantMenuItemDesc">Menu Item Description:</label>
+    <input type="text" [(ngModel)]="menuItemDesc" placeholder="Enter menu item description" (change)="isDirty=true"><br>
+
+    <label for="restaurantMenuItemImage">Menu Item Image:</label>
+    <input type="file" name="restaurantImage" (change)="onMenuItemImageSelectedForOne($event)" accept="image/*"><br>
+
+    <label for="restaurantMenuItemType">Is it vegeterian? True/False:</label>
+    <input type="text" [(ngModel)]="menuItemType" placeholder="Is it vegeterian?" (change)="isDirty=true" required><br>
+
+    <button (click)="storeMenu(menuItemName,menuItemPrice,menuItemDesc,menuItemType)">
+      Add Menu Item</button>
+  </div>
+</div>
+
+<button (click)="updateRestaurant()" (change)="isDirty=false" type="submit" class="update-button">Update Restaurant</button>

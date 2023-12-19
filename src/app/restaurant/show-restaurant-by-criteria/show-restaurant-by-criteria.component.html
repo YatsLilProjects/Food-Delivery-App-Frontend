@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div *ngFor="let restaurant of restaurants" class="Restaurant" (click)="showOrderForm(restaurant)">
+    <div class="RestaurantImage">
+      <img src="{{restaurant.restaurantImage}}">
+    </div>
+    <div class="restaurant-name">
+      <h2>{{restaurant.restaurantName}}</h2>
+    </div>
+    <div class="cuisine-types">
+      <ul>
+        <li *ngFor="let cuisineType of restaurant.cuisineTypeData; let last = last">
+          {{cuisineType.cuisineType}}{{!last ? ',' : ''}}
+        </li>
+      </ul>
+    </div>
+    <div class="restaurant-location">
+      <p>{{restaurant.restaurantLocation}}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showErrorMessage" class="alert alert-success">
+  {{ errorMessage }}
+</div>

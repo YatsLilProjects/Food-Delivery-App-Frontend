@@ -12,6 +12,7 @@
 
 .second-container {
     overflow: scroll;
+    background-color: aliceblue;
 }
 
 .second-container h2 {
@@ -20,6 +21,7 @@
     font-style: inherit;
     font-family: sans-serif;
 }
+
 
 button {
     background-color: #007BFF;

@@ -57,8 +57,11 @@
 <div class="second-container">
     <h2>Top Brands For You</h2>
     <ul>
-        <li>
-            <img src="" alt="">
+        <li *ngFor="let topBrand of topBrandList">
+            <!-- <a (click)="onBrandClick(topBrand)"> -->
+                <img [src]="topBrand.brandImage" alt="{{ topBrand.brandName }} Image">
+                <h3>{{ topBrand.brandName }}</h3>
+            <!-- </a> -->
         </li>
     </ul>
 </div>

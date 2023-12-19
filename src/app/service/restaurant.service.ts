@@ -104,6 +104,9 @@ export class RestaurantService {
     return this.http.get<Response>(`${this.baseUrl}/viewRestaurantById`,{ params });
   }
   
+  viewAllTopBrands():Observable<Response>{
+    return this.http.get<Response>(`${this.baseUrl}/viewAllTopBrands`);
+  }
   
 }
 

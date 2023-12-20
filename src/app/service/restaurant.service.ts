@@ -107,6 +107,11 @@ export class RestaurantService {
   viewAllTopBrands():Observable<Response>{
     return this.http.get<Response>(`${this.baseUrl}/viewAllTopBrands`);
   }
+
+  getRestaurantByName(restaurantName:string):Observable<Response>{
+    const params = new HttpParams().set('restaurantName',restaurantName)
+    return this.http.get<Response>(`${this.baseUrl}/getRestaurantByName`,{ params });
+  }
   
 }
 

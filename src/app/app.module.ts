@@ -29,6 +29,7 @@ import { OrderSuccessComponent } from './order/order-success/order-success.compo
 import { UniquePipe } from './service/unique.pipe';
 import { MaterialModule } from './material/material.module';
 import { DialogToUpdateComponent } from './restaurant/update-restaurant/dialog-to-update/dialog-to-update.component';
+import { ShowRestaurantByNameComponent } from './restaurant/show-restaurant-by-name/show-restaurant-by-name.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DialogToUpdateComponent } from './restaurant/update-restaurant/dialog-t
     ViewAllRestaurantsComponent,
     OrderSuccessComponent,
     UniquePipe,
-    DialogToUpdateComponent
+    DialogToUpdateComponent,
+    ShowRestaurantByNameComponent
   ],
   imports: [
     BrowserModule,

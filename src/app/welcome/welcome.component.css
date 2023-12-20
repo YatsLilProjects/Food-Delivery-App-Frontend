@@ -1,10 +1,14 @@
+.container {
+    overflow-y: auto;
+}
+
 .first-container {
     overflow: scroll;
     background-color: azure;
 }
 
 .first-container h2 {
-    margin-left: 100px;
+    margin-left: 280px;
     color: #007BFF;
     font-style: oblique;
     font-weight: 900;
@@ -16,7 +20,7 @@
 }
 
 .second-container h2 {
-    margin-left: 100px;
+    margin-left: 280px;
     color: revert;
     font-style: inherit;
     font-family: sans-serif;
@@ -37,7 +41,7 @@ button:hover {
 }
 
 h1 {
-    margin-left: 100px;
+    margin-left: 280px;
     color: crimson;
     display: inline-block;
 }
@@ -49,7 +53,7 @@ h3 {
 }
 
 ul {
-    margin-left: 60px;
+    margin-left: 230px;
     display: flex
 }
 
@@ -59,8 +63,8 @@ li {
 }
 
 li img {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 li a:hover {

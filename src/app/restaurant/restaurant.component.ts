@@ -20,7 +20,6 @@ export class RestaurantComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.selectedMenuItem = this.restaurantService.selectedMenuItem;
     const storedUser=localStorage.getItem('selectedMenuItem');
     this.restaurantService.selectedMenuItem = storedUser || null;
     this.findRestaurantsByMenuItemName();
@@ -45,7 +44,6 @@ export class RestaurantComponent implements OnInit {
 }
 
   showOrderForm(restaurant: Restaurant) {
-    // this.restaurantService.selectedRestaurant = restaurant;
     localStorage.setItem('selectedRestaurant',JSON.stringify(restaurant));
     this.router.navigate(['order',restaurant.restaurantName]);
   }

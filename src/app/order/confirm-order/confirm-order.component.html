@@ -1,55 +1,54 @@
 <div class="container">
-    <div class="Order" *ngIf="orderService.foodCartObject.itemList.length > 0">
-        <h1>Cart Details</h1>
-        <div class="restaurant-info">
-            <img src="{{orderService.foodCartObject.restaurant.restaurantImage}}">
-            <div class="restaurant-data">
-                <h2>{{orderService.foodCartObject.restaurant.restaurantName}}</h2>
-                <h3>{{orderService.foodCartObject.restaurant.restaurantLocation}}</h3>
+        <div class="Order" *ngIf="orderService.foodCartObject.itemList.length > 0">
+            <h1>Cart Details</h1>
+            <div class="restaurant-info">
+                <img src="{{orderService.foodCartObject.restaurant.restaurantImage}}">
+                <div class="restaurant-data">
+                    <h2>{{orderService.foodCartObject.restaurant.restaurantName}}</h2>
+                    <h3>{{orderService.foodCartObject.restaurant.restaurantLocation}}</h3>
+                </div>
             </div>
-        </div>
 
-        <div class="menu-item-details">
-            <p>Items to order:</p>
+            <div class="menu-item-details">
+                <p>Items to order:</p>
+                <ul>
+                    <li *ngFor="let menuItem of uniqueItems">
+                        {{ menuItem }} - {{
+                        orderService.menuItemPrice[orderService.foodCartObject.itemList.indexOf(menuItem)] }}Rs. ({{
+                        countItemOccurrences(menuItem) }})
+                    </li>
+                </ul>
+            </div>
+
+            <div class="special-instructions">
+                <input type="text" name="instructions" [(ngModel)]="specialInstruction"
+                    placeholder="Enter any special instructions">
+                <button (click)="addSpecialInstructions()">Add</button>
+            </div>
+
             <ul>
-                <li *ngFor="let menuItem of uniqueItems">
-                    {{ menuItem }} - {{
-                    orderService.menuItemPrice[orderService.foodCartObject.itemList.indexOf(menuItem)] }}Rs. ({{
-                    countItemOccurrences(menuItem) }})
+                <li *ngFor="let instruction of specialInstructionsList">
+                    {{ instruction }}
                 </li>
             </ul>
+
+            <hr>
+
+            <div>
+                <p>Total Amount Payable - {{orderService.foodCartObject.totalCost}}</p>
+            </div>
+
+            <div class="order-button">
+                <button (click)="addOrder()" class="AddOrder">Order Now</button>
+                <button (click)="deleteFromCart()" class="CancelOrder">Cancel Order</button>
+            </div>
+
         </div>
 
-        <div class="special-instructions">
-            <input type="text" name="instructions" [(ngModel)]="specialInstruction"
-                placeholder="Enter any special instructions">
-            <button (click)="addSpecialInstructions()">Add</button>
+        <div *ngIf="orderService.foodCartObject.itemList.length === 0" class="empty-cart-message">
+            <p>Looks like you have not added anything to your cart.Go ahead and order some delicious food!!</p>
+            <img src="assets\Icons\empty-cart .jpg" />
         </div>
-
-        <ul>
-            <li *ngFor="let instruction of specialInstructionsList">
-                {{ instruction }}
-            </li>
-        </ul>
-
-        <hr>
-
-        <div>
-            <p>Total Amount Payable - {{orderService.foodCartObject.totalCost}}</p>
-        </div>
-
-        <div class="order-button">
-            <button (click)="addOrder()" class="AddOrder">Order Now</button>
-            <button (click)="deleteFromCart()" class="CancelOrder">Cancel Order</button>
-        </div>
-
-    </div>
-
-    <div *ngIf="orderService.foodCartObject.itemList.length === 0" class="empty-cart-message">
-        <p>Looks like you have not added anything to your cart.Go ahead and order some delicious food!!</p>
-        <img src="assets\Icons\empty-cart .jpg" />
-    </div>
-    
 </div>
 
 <div *ngIf="showOrderSuccess" class="alert alert-success">

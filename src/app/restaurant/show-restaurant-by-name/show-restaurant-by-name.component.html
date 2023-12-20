@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="menu-grid">
+        <mat-grid-list cols="4" rowHeight="150px">
+            <mat-grid-tile colspan="2" rowspan="2">
+                <img [src]="restaurantService.selectedRestaurant.menuItems[1].menuItemImage" alt="Menu Item Image">
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="2">
+                <img [src]="restaurantService.selectedRestaurant.menuItems[0].menuItemImage" alt="Menu Item Image">
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <img [src]="restaurantService.selectedRestaurant.menuItems[2].menuItemImage" alt="Menu Item Image">
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">
+                <img [src]="restaurantService.selectedRestaurant.menuItems[3].menuItemImage" alt="Menu Item Image">
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div class="restaurant-name">
+        <h1>{{restaurantService.selectedRestaurant.restaurantName}}</h1>
+    </div>
+    <div class="restaurant-cuisine">
+        <ul>
+            <li *ngFor="let cuisineType of restaurantService.selectedRestaurant.cuisineTypeData; let last = last">
+                {{cuisineType.cuisineType}}{{!last ? ',' : ''}}
+            </li>
+        </ul>
+    </div>
+    <div class="restaurant-location">
+        {{restaurantService.selectedRestaurant.restaurantLocation}}, Mumbai
+    </div>
+
+    <p  style="margin-left: 100px; color: brown;">Open Now:  9am - 10pm (Today)</p>
+
+</div>

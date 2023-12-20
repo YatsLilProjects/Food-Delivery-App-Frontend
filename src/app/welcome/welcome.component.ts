@@ -42,5 +42,10 @@ export class WelcomeComponent implements OnInit {
     })
   }
 
+  onBrandClick(topBrand:TopBrand)
+  {
+     this.router.navigate(['restaurant-by-name',topBrand.brandName])
+  }
+
 
 }

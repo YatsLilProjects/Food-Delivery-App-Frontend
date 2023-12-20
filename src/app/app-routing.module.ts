@@ -23,6 +23,7 @@ import { OrderSuccessComponent } from './order/order-success/order-success.compo
 import { UpdateCustomerComponent } from './customer/update-customer/update-customer.component';
 import { UpdateRestaurantComponent } from './restaurant/update-restaurant/update-restaurant.component';
 import { dirtycheckGuard } from './service/route-guard-service/dirtycheck.guard';
+import { ShowRestaurantByNameComponent } from './restaurant/show-restaurant-by-name/show-restaurant-by-name.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent, canActivate: [CustomerRouteGuardService] },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'order-success', component: OrderSuccessComponent, canActivate: [CustomerRouteGuardService] },
   { path: 'update-restaurant', component: UpdateRestaurantComponent,canDeactivate:[dirtycheckGuard]},
   {path:'update-customer/:customerId',component:UpdateCustomerComponent,canDeactivate:[dirtycheckGuard]},
+  {path:'restaurant-by-name/:restaurantName',component:ShowRestaurantByNameComponent,canActivate: [CustomerRouteGuardService]},
   { path: '**', component: ErrorComponent }
 ];
 @NgModule({

@@ -25,8 +25,7 @@ export class UpdateCustomerComponent implements OnInit, ComponentCanDeactivate {
   isDirty: boolean;
 
   constructor(private customerService: CustomerService,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

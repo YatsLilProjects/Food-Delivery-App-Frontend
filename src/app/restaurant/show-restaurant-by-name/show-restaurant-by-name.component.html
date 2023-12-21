@@ -28,7 +28,82 @@
     <div class="restaurant-location">
         {{restaurantService.selectedRestaurant.restaurantLocation}}, Mumbai
     </div>
+    <p style="margin-left: 25%; color: brown;">Open Now: 9am - 10pm (Today)</p>
 
-    <p  style="margin-left: 100px; color: brown;">Open Now:  9am - 10pm (Today)</p>
+    <div class="restaurant-info">
+        <mat-tab-group dynamicHeight>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="tab-icon">assignment</mat-icon>
+                    Overview
+                </ng-template>
+                <h1>About this place</h1>
+                <div style="display: flex;">
+                    <button class="sanitized-button">
+                        <img src="assets\Icons\sanitized-kitchen.png" alt="sanitized icon" />
+                        Well Sanitized Kitchen
+                    </button>
+                    <button class="sanitized-button">
+                        <img src="assets\Icons\sanitized-hand.jpg" alt="sanitized icon" />
+                        Rider Hand Wash
+                    </button>
+                    <button class="sanitized-button">
+                        <img src="assets\Icons\temp-check-icon.png" alt="sanitized icon" />
+                        Daily Temp. Check
+                    </button>
+                </div>
+                <h2>Cuisines</h2>
+                <ul>
+                    <li *ngFor="let cuisineType of restaurantService.selectedRestaurant.cuisineTypeData;"
+                        class="boxed-li">
+                        {{cuisineType.cuisineType}}
+                    </li>
+                </ul>
+                <h2>More Info</h2>
+                <ul>
+                    <li *ngFor="let moreInfoData of moreInfo" class="more-info">
+                        <span class="material-symbols-outlined">
+                            priority
+                        </span>{{moreInfoData}}
+                    </li>
+                </ul>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="tab-icon">query_builder</mat-icon>
+                    Order Online
+                </ng-template>
+                <div class="restaurant-menu-items">
+                    <ng-container
+                        *ngFor="let menuItem of restaurantService.selectedRestaurant.menuItems; let i = index">
+                        <h2>
+                            <div style="width: 60%;">
+                                {{i+1}}. {{menuItem.menuItemName}} <br>
+                                <span
+                                    style="color:rgba(216, 18, 18, 0.77);">&#x20B9;{{menuItem.menuItemPrice}}</span><br><br>
+                                <span style="color:gray;">{{menuItem.menuItemDesc}}</span>
+                            </div>
+                            <img style="height: 100px;width: 100px ;" src="{{menuItem.menuItemImage}}" />
+                            <!-- <button (click)="onMenuItemSelect(menuItem)" style="height: 40;"><span
+                                    class="material-symbols-outlined">add</span></button>
+                            <span style="margin: 10px 10px;">{{menuItem.quantity}}</span>
+                            <button (click)="onMenuItemDeSelect(menuItem)" style="height: 40; "><span
+                                    class="material-symbols-outlined">remove</span></button> -->
+                        </h2>
+                        <hr class="menu-divider">
+                    </ng-container>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="tab-icon">view_quilt</mat-icon>
+                    Photos
+                </ng-template>
+                Content 3
+            </mat-tab>
+        </mat-tab-group>
+    </div>
 
 </div>

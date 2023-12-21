@@ -26,5 +26,12 @@ export class ShowRestaurantByNameComponent implements OnInit {
     });
   }
 
+  moreInfo: String[] = [
+    'Breakfast',
+    'Home Delivery',
+    'Takeaway Available',
+    'Indoor Seating'
+  ];
+
 
 }

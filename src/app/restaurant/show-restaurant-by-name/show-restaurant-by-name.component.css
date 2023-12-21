@@ -1,49 +1,119 @@
-.container{
-    width: 60%;
-    margin-left: 350px;
-    margin-top: 20px;
+.container {
+  margin-top: 20px;
+  height: 80%;
 }
-img{
-    width: 500px;
-    height: 300px;
+
+img {
+  width: 500px;
+  height: 300px;
 }
-img:hover{
-    cursor: pointer;
-    width: 250px;
-    height: 250px;
+
+img:hover {
+  cursor: pointer;
+  width: 250px;
+  height: 250px;
 }
-.menu-grid{
-    width: 85%;
-    margin-left: 100px;
-    background-color: cornsilk;
+
+.menu-grid {
+  width: 50%;
+  margin-left: 25%;
+  background-color: cornsilk;
 }
-.restaurant-name{
-    margin-left: 100px;
-    font-size: larger;
-    font-family: sans-serif;
-    height: 40px;
+
+.restaurant-name {
+  margin-left: 25%;
+  width: 50%;
+  font-size: larger;
+  font-family: sans-serif;
+  height: 40px;
+  margin-bottom: 10px;
 }
 
 .restaurant-cuisine {
-   margin-left: 100px;
-   height: 25px;
-  }
-  
-  .restaurant-cuisine ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .restaurant-cuisine li {
-    font-size: 16px;
-    margin-top: 0px;
-    color: rgb(99, 96, 96);
-  }
+  width: 50%;
+  margin-left: 25%;
+  height: 25px;
+}
 
+.restaurant-cuisine ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .restaurant-location{
-    margin-left: 100px;
-    color: rgb(173, 170, 170);
-  }
+.restaurant-cuisine li {
+  font-size: 16px;
+  margin-top: 0px;
+  color: rgb(99, 96, 96);
+}
+
+.restaurant-location {
+  width: 50%;
+  margin-left: 25%;
+  color: rgb(173, 170, 170);
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+
+.restaurant-info {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.restaurant-info h1 {
+  font-family: math
+}
+
+.restaurant-info h2{
+  font-family: system-ui;
+}
+
+.restaurant-info img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+.restaurant-info .sanitized-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  padding: 10px;
+  background-color: #baf3ba;
+  font-family: cursive;
+  margin-left: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.restaurant-info ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 25px;
+}
+
+.restaurant-info .boxed-li {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.restaurant-info .more-info{
+  display: flex;
+  align-items: center; 
+  justify-content:center; 
+}
+
+.restaurant-info .more-info span{
+  margin-left: 10px;
+}
+

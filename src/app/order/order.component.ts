@@ -14,7 +14,7 @@ import { FoodCart } from "../model/FoodCart";
 })
 export class OrderComponent implements OnInit {
 
-  // selectedRestaurant: Restaurant = this.restaurantService.selectedRestaurant;
+ 
   foodCart: string[] = [];
   totalPrice: any;
   showErrorMessage: boolean = false;
@@ -88,7 +88,6 @@ export class OrderComponent implements OnInit {
       this.orderService.addItemsToFoodCart(this.orderService.foodCartObject).subscribe({
         next: response => {
           this.orderService.foodCartObject = response.responseData;
-          // localStorage.setItem('cart', JSON.stringify(this.orderService.foodCartObject));
           this.router.navigate(['confirm-order'])
         },
         error: error => {

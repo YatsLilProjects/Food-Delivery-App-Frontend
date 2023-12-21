@@ -3,12 +3,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule} from '@angular/material/icon';
 import { MatBadgeModule} from '@angular/material/badge';
 import { MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const MaterialComponents=[
   MatDialogModule,
   MatIconModule,
   MatBadgeModule,
-  MatGridListModule
+  MatGridListModule,
+  MatTabsModule
 ];
 
 @NgModule({

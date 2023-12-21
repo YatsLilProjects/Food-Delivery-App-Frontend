@@ -30,6 +30,8 @@ import { UniquePipe } from './service/unique.pipe';
 import { MaterialModule } from './material/material.module';
 import { DialogToUpdateComponent } from './restaurant/update-restaurant/dialog-to-update/dialog-to-update.component';
 import { ShowRestaurantByNameComponent } from './restaurant/show-restaurant-by-name/show-restaurant-by-name.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { ShowRestaurantByNameComponent } from './restaurant/show-restaurant-by-n
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

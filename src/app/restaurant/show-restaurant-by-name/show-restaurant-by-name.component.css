@@ -117,3 +117,44 @@ img:hover {
   margin-left: 10px;
 }
 
+.restaurant-menu-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-menu-items h2 {
+  display: flex;
+  margin-left: 20px;
+  color: green;
+  margin-top: 30px;
+  font-size: medium;
+}
+
+.restaurant-info h2 .menu-item-info{
+  width: 60%;
+}
+
+.restaurant-info h2 .menu-item-info .menu-item-price{
+  color:rgba(216, 18, 18, 0.77);
+}
+
+.restaurant-info h2 .menu-item-info .menu-item-desc{
+  color:grey
+}
+
+.restaurant-menu-items img {
+  max-height: 90px;
+  max-width: 95px;
+  margin-left: 30px;
+  border-radius: 10px;
+  margin-right: 1em;
+  margin-top: 10px;
+
+}
+
+.menu-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px dotted #000;
+}
+

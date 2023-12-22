@@ -78,18 +78,17 @@
                     <ng-container
                         *ngFor="let menuItem of restaurantService.selectedRestaurant.menuItems; let i = index">
                         <h2>
-                            <div style="width: 60%;">
+                            <div class="menu-item-info">
                                 {{i+1}}. {{menuItem.menuItemName}} <br>
-                                <span
-                                    style="color:rgba(216, 18, 18, 0.77);">&#x20B9;{{menuItem.menuItemPrice}}</span><br><br>
-                                <span style="color:gray;">{{menuItem.menuItemDesc}}</span>
+                                <span class="menu-item-price">&#x20B9;{{menuItem.menuItemPrice}}</span><br><br>
+                                <span class="menu-item-desc">{{menuItem.menuItemDesc}}</span>
                             </div>
-                            <img style="height: 100px;width: 100px ;" src="{{menuItem.menuItemImage}}" />
+                            <img src="{{menuItem.menuItemImage}}" />
                             <!-- <button (click)="onMenuItemSelect(menuItem)" style="height: 40;"><span
-                                    class="material-symbols-outlined">add</span></button>
-                            <span style="margin: 10px 10px;">{{menuItem.quantity}}</span>
-                            <button (click)="onMenuItemDeSelect(menuItem)" style="height: 40; "><span
-                                    class="material-symbols-outlined">remove</span></button> -->
+                                class="material-symbols-outlined">add</span></button>
+                        <span style="margin: 10px 10px;">{{menuItem.quantity}}</span>
+                        <button (click)="onMenuItemDeSelect(menuItem)" style="height: 40; "><span
+                                class="material-symbols-outlined">remove</span></button> -->
                         </h2>
                         <hr class="menu-divider">
                     </ng-container>

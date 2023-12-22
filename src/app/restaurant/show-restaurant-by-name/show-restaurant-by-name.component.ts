@@ -33,5 +33,6 @@ export class ShowRestaurantByNameComponent implements OnInit {
     'Indoor Seating'
   ];
 
+  
 
 }

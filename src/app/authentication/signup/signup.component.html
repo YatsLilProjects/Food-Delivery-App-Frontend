@@ -80,7 +80,7 @@
 
     <div>
       <button type="submit" [ngStyle]="{'background-color': registerForm.valid ? '#4CAF50' : '#808080'}"
-        [disabled]="!registerForm.valid">
+        [disabled]="!registerForm.valid" (change)="isDirty=false">
         Register
       </button>
     </div>

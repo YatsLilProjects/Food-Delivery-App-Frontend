@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, O
 import { NavigationEnd, Route, Router } from '@angular/router';
 import { CustomerService } from 'src/app/service/customer.service';
 import { OrderService } from 'src/app/service/order.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-confirm-order',
@@ -17,10 +18,7 @@ export class ConfirmOrderComponent implements OnInit, AfterViewInit {
   foodCartId: number;
   specialInstruction: string = '';
   specialInstructionsList: string[] = [];
-  showOrderSuccess: boolean = false;
-  showErrorMessage: boolean = false;
-  successMessage: string;
-  errorMessage: string;
+  errorMessage: string[] = [];
   customerId: number;
 
 
@@ -44,22 +42,19 @@ export class ConfirmOrderComponent implements OnInit, AfterViewInit {
     this.orderService.orderObject.menuItemPriceList = this.orderService.menuItemPrice;
     this.orderService.addOrderDetails(this.orderService.orderObject).subscribe({
       next: response => {
-        this.showOrderSuccess = true;
-        this.successMessage = 'Order Placed Successfully';
-        this.orderService.foodCartObject.itemList = [];
-        this.orderService.foodCartObject.totalCost = 0;
-        this.specialInstructionsList = [];
+        this.deleteFromCart();
         this.router.navigate(['order-success']);
       },
       error: error => {
-        this.showErrorMessage = true;
         this.errorMessage = error.error.errMessage;
+        const arrayAsErrors = this.errorMessage.join(',');
+        Swal.fire({
+          title: 'Oops! Error Occurred While Placing Order.',
+          html: `${arrayAsErrors}`,
+          icon: 'error'
+        });
       }
     })
-    setTimeout(() => {
-      this.showOrderSuccess = false
-      this.showErrorMessage = false
-    }, 2000)
   }
 
   addSpecialInstructions() {
@@ -75,10 +70,15 @@ export class ConfirmOrderComponent implements OnInit, AfterViewInit {
         this.orderService.foodCartObject.itemList = [];
         this.orderService.foodCartObject.totalCost = 0;
         this.specialInstructionsList = [];
-        this.router.navigate(['confirm-order']);
       },
       error: error => {
-        console.log(error.error.errMessage)
+        this.errorMessage = error.error.errMessage;
+        const arrayAsErrors = this.errorMessage.join(',');
+        Swal.fire({
+          title: 'Oops! Error Occurred While Cancelling Order.',
+          html: `${arrayAsErrors}`,
+          icon: 'error'
+        });
       }
     })
   }

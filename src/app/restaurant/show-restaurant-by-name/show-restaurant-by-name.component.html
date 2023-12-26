@@ -2,10 +2,10 @@
     <div class="menu-grid">
         <mat-grid-list cols="4" rowHeight="150px">
             <mat-grid-tile colspan="2" rowspan="2">
-                <img [src]="restaurantService.selectedRestaurant.menuItems[1].menuItemImage" alt="Menu Item Image">
+                <img [src]="restaurantService.selectedRestaurant.menuItems[0].menuItemImage" alt="Menu Item Image">
             </mat-grid-tile>
             <mat-grid-tile colspan="1" rowspan="2">
-                <img [src]="restaurantService.selectedRestaurant.menuItems[0].menuItemImage" alt="Menu Item Image">
+                <img [src]="restaurantService.selectedRestaurant.menuItems[1].menuItemImage" alt="Menu Item Image">
             </mat-grid-tile>
             <mat-grid-tile colspan="1" rowspan="1">
                 <img [src]="restaurantService.selectedRestaurant.menuItems[2].menuItemImage" alt="Menu Item Image">
@@ -28,8 +28,7 @@
     <div class="restaurant-location">
         {{restaurantService.selectedRestaurant.restaurantLocation}}, Mumbai
     </div>
-    <p style="margin-left: 25%; color: brown;">Open Now: 9am - 10pm (Today)</p>
-
+    <p>Open Now: 9am - 10pm (Today)</p>
     <div class="restaurant-info">
         <mat-tab-group dynamicHeight>
             <mat-tab>
@@ -84,11 +83,11 @@
                                 <span class="menu-item-desc">{{menuItem.menuItemDesc}}</span>
                             </div>
                             <img src="{{menuItem.menuItemImage}}" />
-                            <!-- <button (click)="onMenuItemSelect(menuItem)" style="height: 40;"><span
-                                class="material-symbols-outlined">add</span></button>
-                        <span style="margin: 10px 10px;">{{menuItem.quantity}}</span>
-                        <button (click)="onMenuItemDeSelect(menuItem)" style="height: 40; "><span
-                                class="material-symbols-outlined">remove</span></button> -->
+                            <button class="add-remove" (click)="onMenuItemSelect(menuItem)"><span
+                                    class="material-symbols-outlined">add</span></button>
+                            <span class="quantity">{{menuItem.quantity}}</span>
+                            <button class="add-remove" (click)="onMenuItemDeSelect(menuItem)"><span
+                                    class="material-symbols-outlined">remove</span></button>
                         </h2>
                         <hr class="menu-divider">
                     </ng-container>
@@ -100,9 +99,21 @@
                     <mat-icon class="tab-icon">view_quilt</mat-icon>
                     Photos
                 </ng-template>
-                Content 3
+                <h2>{{restaurantService.selectedRestaurant.restaurantName}} Photos</h2>
+                <div class="image-grid">
+                    <div *ngFor="let menuItem of restaurantService.selectedRestaurant.menuItems" class="grid-item">
+                        <img src="{{menuItem.menuItemImage}}" />
+                    </div>
+                </div>
             </mat-tab>
         </mat-tab-group>
+    </div>
+
+    <div class="view-cart-container">
+        <button (click)="addItemsToFoodCart()" *ngIf="foodCart.length > 0">
+            <span class="material-symbols-outlined">shopping_cart</span>VIEW CART
+            ({{quantity}})
+        </button>
     </div>
 
 </div>

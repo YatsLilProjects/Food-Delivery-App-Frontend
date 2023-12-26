@@ -56,7 +56,7 @@ export class AddRestaurantComponent implements OnInit, ComponentCanDeactivate {
         this.restaurantId = response.responseData.restaurantId;
         Swal.fire({
           title: 'Congratulations!! <br> Restaurant Added Successfully.',
-          html: `Your restaurant id is ${this.restaurantId}.<br>You can use this id in future to update any details`,
+          html: `Your restaurant id is ${this.restaurantId}.<br>You can use this id in future to update it's details.`,
           icon: 'success'
         });
       },

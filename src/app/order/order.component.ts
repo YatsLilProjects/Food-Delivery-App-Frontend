@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Restaurant } from "../model/Restaurant";
 import { OrderService } from "../service/order.service";
 import { RestaurantService } from "../service/restaurant.service";
 import { Router } from "@angular/router";
 import { CustomerService } from "../service/customer.service";
 import { MenuItem } from "../model/MenuItem";
-import { FoodCart } from "../model/FoodCart";
+
 
 @Component({
   selector: 'app-order',

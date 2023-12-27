@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantService } from '../service/restaurant.service';
-import { CustomerService } from '../service/customer.service';
 import { Customer } from '../model/Customer';
 import { TopBrand } from '../model/TopBrand';
 
@@ -26,9 +25,8 @@ export class WelcomeComponent implements OnInit {
     this.getAllTopBrands();
   }
 
-  onMenuItemBtnClick(menuName: string) {
-    localStorage.setItem('selectedMenuItem', menuName);
-    this.router.navigate(['restaurants', menuName]);
+  onMenuItemBtnClick(menuItem: string) {
+    this.router.navigate(['restaurants', menuItem]);
   }
 
   getAllTopBrands() {
@@ -42,9 +40,8 @@ export class WelcomeComponent implements OnInit {
     })
   }
 
-  onBrandClick(topBrand:TopBrand)
-  {
-     this.router.navigate(['restaurant-by-name',topBrand.brandName])
+  onBrandClick(topBrand: TopBrand) {
+    this.router.navigate(['restaurant-by-name', topBrand.brandName])
   }
 
 

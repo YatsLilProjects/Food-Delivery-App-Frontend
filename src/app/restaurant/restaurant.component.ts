@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../model/Restaurant';
 import { RestaurantService } from '../service/restaurant.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-restaurant',
@@ -11,41 +12,40 @@ import { Router } from '@angular/router';
 export class RestaurantComponent implements OnInit {
   selectedMenuItem: string;
   restaurants: Restaurant[];
-  errorMessage: String;
-  showErrorMessage: boolean = false;
+  errorMessage: string[] = [];
   selectedRestaurant: Restaurant;
   showOrder: boolean = false;
 
   constructor(private restaurantService: RestaurantService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    const storedUser=localStorage.getItem('selectedMenuItem');
-    this.restaurantService.selectedMenuItem = storedUser || null;
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.selectedMenuItem = params['menuItem'];
+    });
     this.findRestaurantsByMenuItemName();
   }
 
   findRestaurantsByMenuItemName() {
-    const selectedMenuItem = this.restaurantService.selectedMenuItem;
-    if (selectedMenuItem !== null) {
-    this.restaurantService.findRestaurantsByMenuItemName(selectedMenuItem).subscribe({
+    this.restaurantService.findRestaurantsByMenuItemName(this.selectedMenuItem).subscribe({
       next: response => {
         this.restaurants = response.responseData;
       },
       error: error => {
         this.errorMessage = error.error.errMessage;
-        this.showErrorMessage = true;
+        const arrayAsErrors = this.errorMessage.join(',');
+        Swal.fire({
+          title: 'Oops! Restaurants Not Found.',
+          html: `${arrayAsErrors}`,
+          icon: 'error'
+        });
       }
     });
-    setTimeout(() => {
-      this.showErrorMessage = false;
-    }, 2000);
   }
-}
 
   showOrderForm(restaurant: Restaurant) {
-    localStorage.setItem('selectedRestaurant',JSON.stringify(restaurant));
-    this.router.navigate(['order',restaurant.restaurantName]);
+    this.router.navigate(['order', restaurant.restaurantName]);
   }
 
 

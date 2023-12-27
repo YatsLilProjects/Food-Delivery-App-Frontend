@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'admin-dashboard/:name', component: AdminComponent, canActivate: [AdminRouteGuardService] },
   { path: 'view-restaurants', component: ViewAllRestaurantsComponent, canActivate: [AdminRouteGuardService] },
   { path: 'order-success', component: OrderSuccessComponent, canActivate: [CustomerRouteGuardService] },
-  { path: 'update-restaurant', component: UpdateRestaurantComponent,canDeactivate:[dirtycheckGuard]},
+  { path: 'update-restaurant/:restaurantId', component: UpdateRestaurantComponent,canDeactivate:[dirtycheckGuard]},
   {path:'update-customer/:customerId',component:UpdateCustomerComponent,canDeactivate:[dirtycheckGuard]},
   {path:'restaurant-by-name/:restaurantName',component:ShowRestaurantByNameComponent,canActivate: [CustomerRouteGuardService]},
   { path: '**', component: ErrorComponent }

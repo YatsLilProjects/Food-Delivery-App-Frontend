@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { OrderService } from "../service/order.service";
 import { RestaurantService } from "../service/restaurant.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CustomerService } from "../service/customer.service";
 import { MenuItem } from "../model/MenuItem";
 
@@ -13,7 +13,7 @@ import { MenuItem } from "../model/MenuItem";
 })
 export class OrderComponent implements OnInit {
 
- 
+
   foodCart: string[] = [];
   totalPrice: any;
   showErrorMessage: boolean = false;
@@ -29,13 +29,19 @@ export class OrderComponent implements OnInit {
     public restaurantService: RestaurantService,
     private router: Router,
     private customerService: CustomerService,
-  ) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     const storedUser = localStorage.getItem('loggedInCustomer');
     this.customerService.loggedInCustomer = storedUser ? JSON.parse(storedUser) : null;
-    const storedRestaurant=localStorage.getItem('selectedRestaurant');
-    this.restaurantService.selectedRestaurant=storedRestaurant?JSON.parse(storedRestaurant) : null;
+    this.route.params.subscribe(params => {
+      const restaurantName = params['restaurant-name'];
+      this.restaurantService.getRestaurantByName(restaurantName).subscribe({
+        next: response => {
+          this.restaurantService.selectedRestaurant = response.responseData;
+        }
+      })
+    });
   }
 
   onMenuItemSelect(menuItem: MenuItem) {

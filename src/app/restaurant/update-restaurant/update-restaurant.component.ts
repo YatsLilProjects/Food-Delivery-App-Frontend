@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ComponentCanDeactivate } from 'src/app/component-can-deactivate';
 import { CuisineTypeData } from 'src/app/model/CuisineTypeData';
 import { MenuItem } from 'src/app/model/MenuItem';
@@ -37,12 +38,19 @@ export class UpdateRestaurantComponent implements OnInit, ComponentCanDeactivate
   selectedFile: string;
 
 
-  constructor(public restaurantService: RestaurantService) { }
+  constructor(public restaurantService: RestaurantService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.viewAllCuisineTypes();
-    const storedRestaurant = localStorage.getItem('selectedRestaurant');
-    this.restaurantService.selectedRestaurant = storedRestaurant ? JSON.parse(storedRestaurant) : null
+    this.route.params.subscribe(params => {
+      const restaurantId = params['restaurantId'];
+      this.restaurantService.getRestaurantById(restaurantId).subscribe({
+        next: response => {
+          this.restaurantService.selectedRestaurant = response.responseData;
+        }
+      })
+    });
   }
 
   updateRestaurant() {

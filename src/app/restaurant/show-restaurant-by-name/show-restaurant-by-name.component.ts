@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'src/app/model/MenuItem';
 import { Restaurant } from 'src/app/model/Restaurant';
@@ -24,6 +24,7 @@ export class ShowRestaurantByNameComponent implements OnInit {
   totalPrice: any;
   isProcessingAddItemsToCart: boolean = false;
   errorMessage: string[] = [];
+  restaurantTime:string="Open Now: 9am - 10pm (Today)";
 
   moreInfo: String[] = [
     'Breakfast',
@@ -36,15 +37,26 @@ export class ShowRestaurantByNameComponent implements OnInit {
     public restaurantService: RestaurantService,
     private orderService: OrderService,
     private customerService: CustomerService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const restaurantName = params['restaurantName'];
+      this.restaurantService.selectedRestaurant=new Restaurant();
       this.restaurantService.getRestaurantByName(restaurantName).subscribe({
         next: response => {
           this.restaurantService.selectedRestaurant = response.responseData;
+        },
+        error: error => {
+          this.errorMessage = error.error.errMessage;
+          const arrayAsErrors = this.errorMessage.join(',');
+          Swal.fire({
+            title: 'Oops! Restaurant Not Found.',
+            html: `${arrayAsErrors}`,
+            icon: 'error'
+          });
         }
       })
     });
@@ -107,7 +119,7 @@ export class ShowRestaurantByNameComponent implements OnInit {
           this.errorMessage = error.error.errMessage;
           const arrayAsErrors = this.errorMessage.join(',');
           Swal.fire({
-            title: 'Oops! Items not added in cart!',
+            title: 'Oops! Items Not Added In Cart!',
             html: `${arrayAsErrors}`,
             icon: 'error'
           });

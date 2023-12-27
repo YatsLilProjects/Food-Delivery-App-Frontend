@@ -23,8 +23,7 @@ export class DialogToUpdateComponent {
   RouteToUpdate() {
     this.restaurantService.getRestaurantById(this.restaurantId).subscribe({
       next: response => {
-        localStorage.setItem('selectedRestaurant', JSON.stringify(response.responseData))
-        this.route.navigate(['update-restaurant']);
+        this.route.navigate(['update-restaurant',response.responseData.restaurantId]);
         this.dialogRef.close();
       },
       error: error => {

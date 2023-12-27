@@ -72,13 +72,10 @@ export class ViewAllRestaurantsComponent implements OnInit {
     });
   }
 
-
-  showUpdateForm(restaurant: Restaurant) {
+  showUpdateForm(restaurantId: number) {
     this.showUpdate = !this.showUpdate;
-    localStorage.setItem('selectedRestaurant', JSON.stringify(restaurant));
-    this.router.navigate(['update-restaurant'])
+    this.router.navigate(['update-restaurant',restaurantId]);
   }
-
 
   refreshData() {
     this.restaurantService.viewAllRestaurants().subscribe({

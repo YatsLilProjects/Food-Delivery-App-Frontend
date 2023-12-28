@@ -1,5 +1,5 @@
 <div class="container" *ngIf="restaurantService.selectedRestaurant!=null">
-    <div class="menu-grid">
+    <div class="menu-grid" [class.scrolled]="isScrolled">
         <mat-grid-list cols="4" rowHeight="150px">
             <mat-grid-tile colspan="2" rowspan="2">
                 <img [src]="restaurantService.selectedRestaurant.menuItems[0].menuItemImage" alt="Menu Item Image">
@@ -15,20 +15,23 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-    <div class="restaurant-name">
-        <h1>{{restaurantService.selectedRestaurant.restaurantName}}</h1>
+    <div class="restaurant-intro">
+        <div class="restaurant-name">
+            <h1>{{restaurantService.selectedRestaurant.restaurantName}}</h1>
+        </div>
+        <div class="restaurant-cuisine">
+            <ul>
+                <li *ngFor="let cuisineType of restaurantService.selectedRestaurant.cuisineTypeData; let last = last">
+                    {{cuisineType.cuisineType}}{{!last ? ',' : ''}}
+                </li>
+            </ul>
+        </div>
+        <div class="restaurant-location">
+            {{restaurantService.selectedRestaurant.restaurantLocation}}, Mumbai
+        </div>
+        <p>{{restaurantTime}}</p>
     </div>
-    <div class="restaurant-cuisine">
-        <ul>
-            <li *ngFor="let cuisineType of restaurantService.selectedRestaurant.cuisineTypeData; let last = last">
-                {{cuisineType.cuisineType}}{{!last ? ',' : ''}}
-            </li>
-        </ul>
-    </div>
-    <div class="restaurant-location">
-        {{restaurantService.selectedRestaurant.restaurantLocation}}, Mumbai
-    </div>
-    <p>{{restaurantTime}}</p>
+
     <div class="restaurant-info">
         <mat-tab-group dynamicHeight>
             <mat-tab>
@@ -73,9 +76,17 @@
                     <mat-icon class="tab-icon">query_builder</mat-icon>
                     Order Online
                 </ng-template>
+                <div class="menu-item-header">
+                    <h2>Order Online</h2>
+                    <input type="text" placeholder="Search within menu" [(ngModel)]="menuItemName"
+                        (ngModelChange)="findByMenuItemName()">
+                    <!-- <span class="material-symbols-outlined">
+                        search
+                        </span> -->
+                </div>
+
                 <div class="restaurant-menu-items">
-                    <ng-container
-                        *ngFor="let menuItem of restaurantService.selectedRestaurant.menuItems; let i = index">
+                    <ng-container *ngFor="let menuItem of menuItemList; let i = index">
                         <h2>
                             <div class="menu-item-info">
                                 {{i+1}}. {{menuItem.menuItemName}} <br>

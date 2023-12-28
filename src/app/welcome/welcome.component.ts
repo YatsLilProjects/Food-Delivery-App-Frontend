@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantService } from '../service/restaurant.service';
 import { Customer } from '../model/Customer';
 import { TopBrand } from '../model/TopBrand';
+import { CustomerService } from '../service/customer.service';
 
 @Component({
   selector: 'app-welcome',
@@ -14,14 +15,20 @@ export class WelcomeComponent implements OnInit {
   username: String;
   customer: Customer;
   topBrandList: TopBrand[] = [];
+  customerId: number;
 
   constructor(private restaurantService: RestaurantService,
-    private router: Router) { }
+    private router: Router,
+    private customerService: CustomerService) { }
 
   ngOnInit(): void {
     const storedUser = localStorage.getItem('loggedInCustomer');
     this.customer = storedUser ? JSON.parse(storedUser) : null;
-    this.username = this.customer.customerName;
+    this.customerService.getCustomerById(this.customer.customerId).subscribe({
+      next: response => {
+        this.username = response.responseData.customerName;
+      }
+    })
     this.getAllTopBrands();
   }
 

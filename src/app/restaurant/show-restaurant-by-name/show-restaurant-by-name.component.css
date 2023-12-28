@@ -19,6 +19,14 @@ img:hover {
   width: 50%;
   margin-left: 25%;
   background-color: cornsilk;
+  position: fixed;
+  top: 65px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.menu-grid.scrolled {
+  top: 0;
 }
 
 .restaurant-name {
@@ -62,6 +70,7 @@ img:hover {
 .restaurant-info {
   width: 50%;
   margin-left: 25%;
+  margin-top: 400px;
 }
 
 .restaurant-info h1 {
@@ -127,7 +136,7 @@ img:hover {
   display: flex;
   margin-left: 20px;
   color: green;
-  margin-top: 30px;
+
   font-size: medium;
 }
 
@@ -192,7 +201,7 @@ p {
   font-weight: bold;
 }
 
-.view-cart-container .material-symbols-outlined{
+.view-cart-container .material-symbols-outlined {
   margin-right: 5px;
 }
 
@@ -209,8 +218,35 @@ p {
   margin: 16px;
 }
 
-.grid-item img{
+.grid-item img {
   max-width: 170px;
   max-height: 170px;
   border-radius: 10px;
+}
+
+.restaurant-intro {
+  position: fixed;
+  width: 100%;
+  top: 300px;
+  background-color: #fff;
+  z-index: 1000;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+
+.menu-item-header{
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-header input{
+  margin-left: 55%;
+  height: 30px;
+  width:200px;
+  margin-right: 10px;
+  font-size: medium;
+}
+
+button:hover{
+  cursor: pointer;
 }

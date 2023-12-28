@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'src/app/model/MenuItem';
 import { Restaurant } from 'src/app/model/Restaurant';
@@ -24,7 +24,16 @@ export class ShowRestaurantByNameComponent implements OnInit {
   totalPrice: any;
   isProcessingAddItemsToCart: boolean = false;
   errorMessage: string[] = [];
-  restaurantTime:string="Open Now: 9am - 10pm (Today)";
+  restaurantTime: string = "Open Now: 9am - 10pm (Today)";
+  isScrolled: boolean = false;
+  menuItemList: MenuItem[] = []
+  menuItemName: string;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.isScrolled = scrollPosition > 65;
+  }
 
   moreInfo: String[] = [
     'Breakfast',
@@ -44,10 +53,11 @@ export class ShowRestaurantByNameComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const restaurantName = params['restaurantName'];
-      this.restaurantService.selectedRestaurant=new Restaurant();
+      this.restaurantService.selectedRestaurant = new Restaurant();
       this.restaurantService.getRestaurantByName(restaurantName).subscribe({
         next: response => {
           this.restaurantService.selectedRestaurant = response.responseData;
+          this.menuItemList=this.restaurantService.selectedRestaurant.menuItems;
         },
         error: error => {
           this.errorMessage = error.error.errMessage;
@@ -128,6 +138,18 @@ export class ShowRestaurantByNameComponent implements OnInit {
     }
   }
 
+  findByMenuItemName() {
+    if (this.menuItemName.trim() === '') {
+      this.menuItemList = this.restaurantService.selectedRestaurant.menuItems;
+    } else {
+      this.restaurantService.findByMenuItemNameAndRestaurantName(this.menuItemName, this.restaurantService.selectedRestaurant.restaurantName).subscribe({
+        next: response => {
+          this.menuItemList = response.responseData;
+        },
+        error: error => console.log(error.error.errMessage)
+      });
+    }
+  }
 
 
 }

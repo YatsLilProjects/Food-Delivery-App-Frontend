@@ -112,6 +112,13 @@ export class RestaurantService {
     const params = new HttpParams().set('restaurantName',restaurantName)
     return this.http.get<Response>(`${this.baseUrl}/getRestaurantByName`,{ params });
   }
+
+  findByMenuItemNameAndRestaurantName(menuItemName:string,restaurantName:string):Observable<Response>{
+    const params = new HttpParams()
+    .set('menuItemName',menuItemName)
+    .set('restaurantName',restaurantName)
+    return this.http.get<Response>(`${this.baseUrl}/searchMenuItem`,{ params });
+  }
   
 }
 

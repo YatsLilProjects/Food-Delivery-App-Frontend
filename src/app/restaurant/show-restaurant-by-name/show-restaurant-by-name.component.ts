@@ -57,7 +57,7 @@ export class ShowRestaurantByNameComponent implements OnInit {
       this.restaurantService.getRestaurantByName(restaurantName).subscribe({
         next: response => {
           this.restaurantService.selectedRestaurant = response.responseData;
-          this.menuItemList=this.restaurantService.selectedRestaurant.menuItems;
+          this.menuItemList = this.restaurantService.selectedRestaurant.menuItems;
         },
         error: error => {
           this.errorMessage = error.error.errMessage;
@@ -106,7 +106,6 @@ export class ShowRestaurantByNameComponent implements OnInit {
   }
 
   addItemsToFoodCart() {
-    console.log("Hello")
     this.isProcessingAddItemsToCart = true;
     if (this.isProcessingAddItemsToCart) {
       this.calculateTotalPrice();
@@ -146,10 +145,33 @@ export class ShowRestaurantByNameComponent implements OnInit {
         next: response => {
           this.menuItemList = response.responseData;
         },
-        error: error => console.log(error.error.errMessage)
+        error: error => {
+          this.errorMessage = error.error.errMessage;
+          const arrayAsErrors = this.errorMessage.join(',');
+          Swal.fire(`${arrayAsErrors}`);
+        }
       });
     }
   }
+
+  onCheckboxChange(event: any): void {
+    if (event.target.checked) {
+      this.restaurantService.findVegMenus(this.restaurantService.selectedRestaurant.restaurantName).subscribe({
+        next: response => {
+          this.menuItemList = response.responseData;
+        },
+        error: error => {
+          this.errorMessage = error.error.errMessage;
+          const arrayAsErrors = this.errorMessage.join(',');
+          Swal.fire(`${arrayAsErrors}`);
+        }
+      })
+    } else {
+      this.menuItemList = this.restaurantService.selectedRestaurant.menuItems;
+    }
+  }
+
+
 
 
 }

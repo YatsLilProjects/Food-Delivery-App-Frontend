@@ -4,6 +4,7 @@ import { RestaurantService } from '../service/restaurant.service';
 import { Customer } from '../model/Customer';
 import { TopBrand } from '../model/TopBrand';
 import { CustomerService } from '../service/customer.service';
+import { FoodType } from '../model/FoodType';
 
 @Component({
   selector: 'app-welcome',
@@ -15,6 +16,7 @@ export class WelcomeComponent implements OnInit {
   username: String;
   customer: Customer;
   topBrandList: TopBrand[] = [];
+  foodTypeList: FoodType[] = [];
   customerId: number;
 
   constructor(private restaurantService: RestaurantService,
@@ -30,10 +32,23 @@ export class WelcomeComponent implements OnInit {
       }
     })
     this.getAllTopBrands();
+    this.viewAllFoodTypes();
   }
 
-  onMenuItemBtnClick(menuItem: string) {
-    this.router.navigate(['restaurants', menuItem]);
+
+  viewAllFoodTypes() {
+    this.restaurantService.viewAllFoodTypes().subscribe({
+      next: response => {
+        this.foodTypeList = response.responseData;
+      },
+      error: error => {
+        console.log(error.error.errMessage);
+      }
+    })
+  }
+
+  onMenuItemBtnClick(FoodType: FoodType) {
+    this.router.navigate(['restaurants', FoodType.foodTypeName]);
   }
 
   getAllTopBrands() {

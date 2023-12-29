@@ -78,14 +78,17 @@
                 </ng-template>
                 <div class="menu-item-header">
                     <h2>Order Online</h2>
-                    <input type="text" placeholder="Search within menu" [(ngModel)]="menuItemName"
-                        (ngModelChange)="findByMenuItemName()">
-                    <!-- <span class="material-symbols-outlined">
-                        search
-                        </span> -->
+                    <div class="search-container">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Search within menu" [(ngModel)]="menuItemName"
+                            (ngModelChange)="findByMenuItemName()">
+                    </div>
                 </div>
-
                 <div class="restaurant-menu-items">
+                    <div class="veg-checkbox-container">
+                        <input type="checkbox" class="veg-checkbox" (change)="onCheckboxChange($event)">
+                        <label>Veg Only</label><br>
+                    </div>
                     <ng-container *ngFor="let menuItem of menuItemList; let i = index">
                         <h2>
                             <div class="menu-item-info">

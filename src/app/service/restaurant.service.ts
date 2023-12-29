@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 export class RestaurantService {
 
   public restaurantsData: Restaurant[] = [];
-  public selectedMenuItem: string|null;
+  public selectedMenuItem: string | null;
   public selectedRestaurant: Restaurant;
   baseUrl = environment.baseUrl;
 
@@ -93,33 +93,41 @@ export class RestaurantService {
     return this.http.get<Response>(`${this.baseUrl}/getRestaurantsByPages`, { params });
   }
 
-  countTotalNoOfRestaurants():Observable<Response>
-  {
+  countTotalNoOfRestaurants(): Observable<Response> {
     return this.http.get<Response>(`${this.baseUrl}/noOfRestaurants`);
   }
 
-  getRestaurantById(restaurantId:number):Observable<Response>
-  {
-    const params = new HttpParams().set('restaurantId',restaurantId)
-    return this.http.get<Response>(`${this.baseUrl}/viewRestaurantById`,{ params });
+  getRestaurantById(restaurantId: number): Observable<Response> {
+    const params = new HttpParams().set('restaurantId', restaurantId)
+    return this.http.get<Response>(`${this.baseUrl}/viewRestaurantById`, { params });
   }
-  
-  viewAllTopBrands():Observable<Response>{
+
+  viewAllTopBrands(): Observable<Response> {
     return this.http.get<Response>(`${this.baseUrl}/viewAllTopBrands`);
   }
 
-  getRestaurantByName(restaurantName:string):Observable<Response>{
-    const params = new HttpParams().set('restaurantName',restaurantName)
-    return this.http.get<Response>(`${this.baseUrl}/getRestaurantByName`,{ params });
+  getRestaurantByName(restaurantName: string): Observable<Response> {
+    const params = new HttpParams().set('restaurantName', restaurantName)
+    return this.http.get<Response>(`${this.baseUrl}/getRestaurantByName`, { params });
   }
 
-  findByMenuItemNameAndRestaurantName(menuItemName:string,restaurantName:string):Observable<Response>{
+  findByMenuItemNameAndRestaurantName(menuItemName: string, restaurantName: string): Observable<Response> {
     const params = new HttpParams()
-    .set('menuItemName',menuItemName)
-    .set('restaurantName',restaurantName)
-    return this.http.get<Response>(`${this.baseUrl}/searchMenuItem`,{ params });
+      .set('menuItemName', menuItemName)
+      .set('restaurantName', restaurantName)
+    return this.http.get<Response>(`${this.baseUrl}/searchMenuItem`, { params });
   }
-  
+
+  findVegMenus(restaurantName: string): Observable<Response> {
+    const params = new HttpParams()
+      .set('restaurantName', restaurantName)
+    return this.http.get<Response>(`${this.baseUrl}/searchVegMenus`, { params });
+  }
+
+  viewAllFoodTypes(): Observable<Response> {
+    return this.http.get<Response>(`${this.baseUrl}/viewAllFoodTypes`);
+  }
+
 }
 
 

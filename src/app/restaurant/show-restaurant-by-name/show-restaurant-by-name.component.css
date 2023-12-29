@@ -230,23 +230,48 @@ p {
   top: 300px;
   background-color: #fff;
   z-index: 1000;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 
-.menu-item-header{
+.menu-item-header {
   display: flex;
   align-items: center;
 }
 
-.menu-item-header input{
+.menu-item-header input {
   margin-left: 55%;
   height: 30px;
-  width:200px;
+  width: 200px;
   margin-right: 10px;
   font-size: medium;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  width: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 65%;
+}
+
+.search-container input {
+  margin-left: 10px;
+  height: 40px;
+  font-size: medium;
+}
+
+.veg-checkbox-container {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.veg-checkbox-container label {
+  margin-left: 5px;
+  font-family: math;
 }
